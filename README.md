@@ -39,7 +39,7 @@ Internal operations system built on the Zoho Books and Inventory APIs.
 - Print layouts with calibration for pre-printed invoices, receipts and cheques; PDF and Excel export
 - Runs on Docker/Railway and also as a Windows desktop launcher (PyInstaller)
 
-### 🛍️ Essento — retail online shop · *private, client work (Torrecamps Marketing) · in development*
+### 🛍️ Essento — retail online shop · *private, standalone product · in development*
 `Next.js 15` `TypeScript` `Drizzle` `PostgreSQL` `Playwright` `Railway`
 
 Online shop for everyday supplies for Metro Manila shoppers. It is spec-driven: an approved PRD, architecture and UX spec, split into stories that each have to pass a single `npm run verify` gate. It is built with DCTerminalv2's plan → build → review pipeline.
@@ -60,7 +60,7 @@ Own **DATARK** end to end across a Go backend and TypeScript web and desktop app
 - **300+ Playwright desktop E2E tests** in CI as a release gate; promo/billing and timezone fixes; JWT/service-account APIs, OpenAPI
 
 ### Torrecamps Marketing — Software Consultant *(May 2026 – present)*
-TMEcommWeb, TMZohoBooksInteg and Essento (see above).
+TMEcommWeb and TMZohoBooksInteg (see above).
 
 ### Philtech Inc. — Software Engineer I *(Sept 2024 – Oct 2025)*
 Resolved production incidents with ESL, scales, SignShop and POS systems; automated tag forecasting and ESL monitoring that catches stuck HOST→Aperion batches; built a Python queue/wait-time dashboard.
