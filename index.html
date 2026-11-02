@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jan Terence Francisco</title>
+<meta name="description" content="Senior Full-Stack Developer — Go, TypeScript/React, Python, Rust. Portfolio of recent projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --text:#1a1f2b; --muted:#5b6675; --rule:#e2e6ec;
+  --accent:#1c3d5c; --accent-2:#2f6fa8; --chip:#eef3f8; --chip-text:#2a4a68;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f141b; --surface:#161d27; --text:#e6eaf0; --muted:#97a3b3; --rule:#263140;
+    --accent:#9cc4ea; --accent-2:#6fb0ee; --chip:#1e2a38; --chip-text:#b8d3ee;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f141b; --surface:#161d27; --text:#e6eaf0; --muted:#97a3b3; --rule:#263140;
+  --accent:#9cc4ea; --accent-2:#6fb0ee; --chip:#1e2a38; --chip-text:#b8d3ee;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,system-ui,sans-serif}
+a{color:var(--accent-2);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{padding:72px 0 40px}
+.eyebrow{font:500 13px/1 "JetBrains Mono",monospace;color:var(--accent-2);letter-spacing:.06em;text-transform:uppercase}
+h1{font-size:clamp(34px,6vw,52px);line-height:1.05;margin:14px 0 10px;color:var(--accent);font-weight:800;letter-spacing:-.02em}
+.lede{font-size:18px;color:var(--muted);max-width:680px;margin:0}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-block;padding:9px 16px;border-radius:8px;border:1px solid var(--rule);background:var(--surface);color:var(--text);font-weight:600;font-size:14px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn:hover{text-decoration:none;border-color:var(--accent-2)}
+section{padding:28px 0}
+h2{font-size:13px;font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 18px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:20px;display:flex;flex-direction:column}
+.card.feature{grid-column:1/-1}
+.card h3{margin:0;font-size:18px;color:var(--text)}
+.meta{font-size:13px;color:var(--muted);margin:4px 0 10px}
+.card p{margin:0 0 10px;color:var(--text)}
+.card ul{margin:0 0 12px;padding-left:18px;color:var(--muted);font-size:14.5px}
+.card li{margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.chip{font:500 12px/1 "JetBrains Mono",monospace;background:var(--chip);color:var(--chip-text);padding:5px 8px;border-radius:6px}
+.tag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--muted);margin-left:6px;white-space:nowrap}
+.tag.pub{border-color:var(--accent-2);color:var(--accent-2)}
+.job{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--rule)}
+.job:last-child{border-bottom:none}
+.job .when{color:var(--muted);font-size:14px}
+.job h3{margin:0 0 6px;font-size:17px}
+.job ul{margin:0;padding-left:18px;color:var(--muted);font-size:14.5px}
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.skills div{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px}
+.skills b{display:block;font-size:13px;color:var(--accent-2);margin-bottom:4px}
+.skills span{font-size:14px;color:var(--muted)}
+footer{padding:36px 0 56px;color:var(--muted);font-size:14px}
+.theme{position:fixed;top:14px;right:14px;background:var(--surface);border:1px solid var(--rule);color:var(--text);border-radius:8px;padding:6px 10px;cursor:pointer;font:500 13px Inter,sans-serif}
+@media (max-width:640px){.job{grid-template-columns:1fr;gap:4px} header{padding:56px 0 24px}}
+</style>
+</head>
+<body>
+<button class="theme" id="theme" aria-label="Toggle theme">◐ Theme</button>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Senior Full-Stack Developer · Manila, PH</div>
+    <h1>Jan Terence Francisco</h1>
+    <p class="lede">I own systems end to end: I write the spec, build it across the backend, web and desktop, and put tests and release gates around it. Go, TypeScript/React, Python/FastAPI, Rust and Java.</p>
+    <div class="links">
+      <a class="btn primary" href="mailto:jtfrancisco21@gmail.com">Email me</a>
+      <a class="btn" href="https://github.com/jtfrancisco0121">GitHub</a>
+      <a class="btn" href="#projects">Projects</a>
+    </div>
+  </header>
+
+  <section id="projects">
+    <h2>Recent projects</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="job"><div class="when">Oct 2025 – Present</div><div>
+      <h3>Senior Fullstack Developer · Koneksi Inc.</h3>
+      <ul>
+        <li>Own DATARK end to end across a Go backend and TypeScript web and desktop apps.</li>
+        <li>Built File Disaster Recovery &amp; Compliance: scoring engine, control matrix, audit ledger, Korean PDF reports, Org Admin dashboard, recovery testing, retention.</li>
+        <li>Designed the notification system (Asynq/AsynqMon, delivery separated by role) and role-based onboarding.</li>
+        <li>Improved storage reliability: S3 gateway and credentials redesign, realtime-backup recovery with retry/backoff and resumable downloads.</li>
+        <li>Built and maintain 300+ Playwright desktop E2E tests that gate releases in CI.</li>
+      </ul></div></div>
+    <div class="job"><div class="when">May 2026 – Present</div><div>
+      <h3>Software Consultant · Torrecamps Marketing</h3>
+      <ul>
+        <li>Built and run TMEcommWeb (B2B portal) and TMZohoBooksInteg (FastAPI operations system) in production on Railway.</li>
+      </ul></div></div>
+    <div class="job"><div class="when">Sept 2024 – Oct 2025</div><div>
+      <h3>Software Engineer I · Philtech Inc.</h3>
+      <ul>
+        <li>Resolved production incidents with ESL, scales, SignShop and POS systems; automated tag forecasting and stuck-batch monitoring.</li>
+        <li>Built a Python queue/wait-time dashboard.</li>
+      </ul></div></div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><b>Frontend</b><span>TypeScript, React, Next.js, Tailwind, xterm.js</span></div>
+      <div><b>Backend</b><span>Go, Python/FastAPI, Java/Spring Boot, Rust, OpenAPI, Asynq</span></div>
+      <div><b>Data</b><span>PostgreSQL, SQLite, ClickHouse, SQL Server, S3/MinIO, IPFS</span></div>
+      <div><b>Desktop</b><span>Tauri 2, Electron, PyInstaller</span></div>
+      <div><b>Integrations</b><span>Zoho Books/Inventory, Auth.js, OAuth, Web Push, ClickUp</span></div>
+      <div><b>Delivery</b><span>Docker, Railway, GitHub Actions, Playwright, Vitest, pytest</span></div>
+      <div><b>AI-assisted engineering</b><span>Claude Code, Cursor, spec-to-code loops, agent handoffs, review gates</span></div>
+      <div><b>Education</b><span>BS IT — Mobile &amp; Internet Technologies, Asia Pacific College (2024)</span></div>
+    </div>
+  </section>
+
+  <footer>Private repos are client or personal work; I can walk through the code on request. · © 2026 Jan Terence Francisco</footer>
+</div>
+
+<script>
+const P = [
+  {f:1, t:"DCTerminalv2", u:"https://github.com/jtfrancisco0121/DCTerminalv2", m:"Desktop workspace for Claude Code agents · macOS & Windows",
+   d:"A terminal app for Claude Code. Its Eagle-Eye pipeline plans a change, waits for your approval, builds it in parallel git worktrees, reviews it, and opens PRs only after you approve.",
+   b:["Tabs and split panes, a command palette, and per-tab “needs you” status with desktop and phone push notifications","Run panel with stages, per-PR progress, CI checks, review gates, cost and timeline","ClickUp integration, a bundled Claude Code plugin with role skills, and a worktree guard plus keychain-stored secrets"],
+   s:["Rust","Tauri 2","React","xterm.js","TypeScript"]},
+  {t:"TMEcommWeb", m:"B2B ordering portal · Torrecamps Marketing",
+   d:"Customer ordering portal with an admin portal that requires Zoho sign-in.",
+   b:["Approved registrations become Zoho Contacts; each customer has their own price book","Admins create Zoho Books draft invoices from submitted orders","Messaging, Web Push, PWA, stock sync, and a shared daily Zoho API budget","About 400 Vitest and Playwright tests"],
+   s:["Next.js 15","Drizzle","PostgreSQL","Auth.js","Railway"]},
+  {t:"TMZohoBooksInteg + TMOps", m:"Finance & operations system · Torrecamps Marketing",
+   d:"Internal operations system built on Zoho Books and Inventory, with a Postgres mirror so reports don't use up API quota.",
+   b:["Invoices, bills, stock, Daily Sales, A/R aging","PH BIR VAT/EWT reporting; payroll posted as Zoho expenses","Calibrated print layouts for invoices and cheques; PDF and Excel export; Windows launcher"],
+   s:["Python","FastAPI","PostgreSQL","WeasyPrint","Docker"]},
+  {t:"DC CRM", m:"Sales, procurement & BIR invoicing",
+   d:"Document and CRM system for a Philippine office-supplies distributor.",
+   b:["Quotation → Delivery Receipt → Sales Invoice → Collection Receipt","POs, stock ledger, inventory valuation, A/R aging, BIR books and VAT","Visual print-template designer with mm calibration; money stored as integer centavos; audit log"],
+   s:["Next.js 16","Prisma 7","PostgreSQL","Zod","pdfme"]},
+  {t:"Barangay Disbursement System", m:"Offline LGU desktop app",
+   d:"Offline Electron app for preparing and printing LGU procurement and disbursement forms.",
+   b:["Imports reference data from a legacy Access .mdb file","Overlay-PDF template designer; templates ship inside the installer","Windows NSIS and macOS DMG installers; local auth; backups"],
+   s:["Electron","React","Drizzle","SQLite"]},
+  {t:"Barangay Request Management", m:"Web + offline desktop editions",
+   d:"Document requests for barangay offices: online submission, tracking, staff workflow and PDF generation.",
+   b:["Tracking that doesn't expose personal data; roles and an audit log","Offline edition: FastAPI sidecar packaged with PyInstaller inside Electron","Station-prefixed numbering so several PCs never collide; exports merged later"],
+   s:["FastAPI","React","Electron","PostgreSQL","pytest"]},
+  {t:"Personal Hub", m:"Household finance & scheduler · live on Railway",
+   d:"Hub shared across multiple households: per-user finance tracking plus a shared calendar and to-do list.",
+   b:["Cash flow, expenses, loans, subscriptions, goals","Households, invites, notifications, cron job","Installable PWA"],
+   s:["Next.js","Prisma","PostgreSQL","Auth.js","PWA"]},
+  {t:"DataForge", m:"Data engineering platform",
+   d:"Batch platform for a fictional retailer: Postgres → Airflow → MinIO → ClickHouse → FastAPI → React.",
+   b:["Bronze/silver/gold layers in object storage","Dashboard for revenue, order count, AOV, freshness and pipeline status","Generates 100k+ synthetic orders"],
+   s:["Airflow","ClickHouse","MinIO","FastAPI","Docker"]},
+  {t:"dc-bmad", u:"https://github.com/jtfrancisco0121/dc-bmad", m:"Agent workflow · Claude Code & Cursor",
+   d:"Plan → build → verify workflow with Planner, Dev, Reviewer, Auditor and Auto roles.",
+   b:["All state lives in files, so switching tools mid-project loses no context","The review step is never skipped, even in auto mode"],
+   s:["Claude Code","Cursor","Markdown"]}
+];
+const esc = s => s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+document.getElementById("grid").innerHTML = P.map(p => `
+  <article class="card${p.f ? " feature" : ""}">
+    <h3>${p.u ? `<a href="${p.u}">${esc(p.t)}</a>` : esc(p.t)}<span class="tag${p.u ? " pub" : ""}">${p.u ? "Public repo" : "Private"}</span></h3>
+    <div class="meta">${esc(p.m)}</div>
+    <p>${esc(p.d)}</p>
+    <ul>${p.b.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+    <div class="chips">${p.s.map(x => `<span class="chip">${esc(x)}</span>`).join("")}</div>
+  </article>`).join("");
+
+const root = document.documentElement, KEY = "theme";
+try { const t = localStorage.getItem(KEY); if (t) root.dataset.theme = t; } catch (e) {}
+document.getElementById("theme").onclick = () => {
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem(KEY, root.dataset.theme); } catch (e) {}
+};
+</script>
+</body>
+</html>
