@@ -130,6 +130,9 @@ h2{font:700 clamp(30px,4vw,42px)/1.1 "Space Grotesk",sans-serif;letter-spacing:-
 .link-arrow{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-weight:600;font-size:14.5px;color:var(--cyan);transition:gap .2s}
 .link-arrow:hover{gap:10px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.card.wide{grid-column:1/-1}
+.wide-body{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.badge.dev{color:var(--amber);border-color:color-mix(in srgb,var(--amber) 40%,transparent)}
 
 .flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:14px;margin:0 0 22px;border-radius:12px;background:color-mix(in srgb,var(--bg) 60%,transparent);border:1px dashed var(--border-strong);font:500 12px "JetBrains Mono",monospace}
 .flow .n{padding:6px 10px;border-radius:7px;background:var(--surface-solid);border:1px solid var(--border-strong);color:var(--text)}
@@ -174,7 +177,7 @@ html:not(.js) .term-body .l{opacity:1}
 @media (max-width:900px){
   .hero{grid-template-columns:1fr;padding:64px 0 48px}
   .term{transform:none}
-  .feature,.grid2{grid-template-columns:1fr}
+  .feature,.grid2,.wide-body{grid-template-columns:1fr}
   .stats{grid-template-columns:repeat(2,1fr)}
   .skills{grid-template-columns:1fr 1fr}
   .sec-head{flex-direction:column;align-items:flex-start}
@@ -309,16 +312,35 @@ html:not(.js) .term-body .l{opacity:1}
       <article class="card reveal">
         <span class="spot"></span>
         <div class="card-top"><span class="kicker">CLIENT · FINANCE OPS</span><span class="badge">Private</span></div>
-        <h3>TMZohoBooksInteg + TMOps</h3>
+        <h3>TMZohoBooksInteg</h3>
         <div class="sub">Finance &amp; operations system · Torrecamps Marketing</div>
-        <div class="flow"><span class="n">Zoho Books</span><span class="ar">⇄</span><span class="n">Postgres mirror</span><span class="ar">→</span><span class="n hl">BIR · A/R · Daily Sales</span></div>
+        <div class="flow"><span class="n">Zoho Books API</span><span class="ar">⇄</span><span class="n">FastAPI ops</span><span class="ar">→</span><span class="n hl">BIR · A/R · Daily Sales</span></div>
         <ul>
           <li>Invoices, bills and stock; Daily Sales and A/R aging reports</li>
           <li>PH BIR VAT/EWT reporting; payroll posted as Zoho expenses</li>
           <li>Calibrated print layouts for invoices, receipts and cheques; PDF and Excel export</li>
           <li>Runs on Docker/Railway and as a Windows desktop launcher</li>
         </ul>
-        <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">WeasyPrint</span><span class="chip">Docker</span></div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">WeasyPrint</span><span class="chip">openpyxl</span><span class="chip">Docker</span></div>
+      </article>
+      <article class="card wide reveal">
+        <span class="spot"></span>
+        <div class="card-top"><span class="kicker">CLIENT · RETAIL E-COMMERCE</span><span class="badge dev">◐ In development</span></div>
+        <h3>Essento</h3>
+        <div class="sub">Online shop for everyday supplies · Torrecamps Marketing</div>
+        <div class="wide-body">
+          <div>
+            <p>A retail storefront for Metro Manila shoppers. It is spec-driven: an approved PRD, architecture and UX spec, split into stories that each have to pass a single <span class="mono">npm run verify</span> gate. It is built with DCTerminalv2's plan → build → review pipeline.</p>
+            <div class="flow"><span class="n">Zoho CSV</span><span class="ar">→</span><span class="n">Catalog</span><span class="ar">→</span><span class="n">Cart</span><span class="ar">→</span><span class="n">Staff confirm</span><span class="ar">→</span><span class="n hl">COD / InstaPay</span></div>
+          </div>
+          <ul>
+            <li>Catalog imported from a Zoho CSV export (1,000+ items) with row-level review, re-import and keyword category rules</li>
+            <li>Checkout with a private order page; payment by COD or InstaPay QR with proof upload and staff verification</li>
+            <li>Admin tools: bulk price changes, price history, margins, publish/unpublish and order status workflow</li>
+            <li>Versioned policy pages, an email outbox, and automatic anonymization of personal data after the retention period</li>
+          </ul>
+        </div>
+        <div class="chips"><span class="chip">Next.js 15</span><span class="chip">TypeScript</span><span class="chip">Drizzle</span><span class="chip">PostgreSQL</span><span class="chip">Playwright</span><span class="chip">Railway</span></div>
       </article>
     </div>
   </section>
@@ -346,7 +368,7 @@ html:not(.js) .term-body .l{opacity:1}
         <h3>Software Consultant</h3>
         <div class="co">Torrecamps Marketing</div>
         <ul>
-          <li>Built and run <strong>TMEcommWeb</strong> and <strong>TMZohoBooksInteg</strong> in production on Railway.</li>
+          <li>Built and run <strong>TMEcommWeb</strong> and <strong>TMZohoBooksInteg</strong> in production on Railway; building <strong>Essento</strong>, a retail shop.</li>
           <li>Wrote specs and agent handoffs for AI-assisted delivery, with human review before every merge.</li>
         </ul>
       </div>
