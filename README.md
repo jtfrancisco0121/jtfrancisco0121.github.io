@@ -8,7 +8,7 @@ I own systems end to end: I write the spec, build it across the backend, web and
 
 ---
 
-## Featured projects
+## Active projects
 
 ### 🖥️ DCTerminalv2 — desktop workspace for Claude Code agents · [repo](https://github.com/jtfrancisco0121/DCTerminalv2)
 `Rust` `Tauri 2` `React` `xterm.js` `TypeScript` `Shell`
@@ -70,16 +70,6 @@ Document requests for barangay offices.
 
 Hub shared across multiple households: per-user finance (cash flow, expenses, loans, subscriptions, goals) plus a shared calendar and to-do list. Includes invites, notifications, and a cron job. Installable PWA, **live in production on Railway**.
 
-### 🔧 DataForge — data engineering platform · *private*
-`Airflow` `MinIO` `ClickHouse` `PostgreSQL` `FastAPI` `React` `Docker`
-
-Batch data platform for a fictional retailer: Postgres → Airflow → MinIO (bronze/silver/gold) → ClickHouse → FastAPI → React dashboard. Tracks revenue, order count, average order value, data freshness and pipeline status, and can generate 100k+ synthetic orders.
-
-### 🤖 dc-bmad — plan → build → verify workflow for AI agents · [repo](https://github.com/jtfrancisco0121/dc-bmad)
-`Claude Code` `Cursor` `Markdown`
-
-Lightweight agent workflow with Planner, Dev, Reviewer, Auditor and Auto roles that works in both Claude Code and Cursor. All state lives in files, so switching tools in the middle of a project loses no context. The review step is never skipped.
-
 ---
 
 ## Professional work
@@ -105,7 +95,7 @@ Resolved production incidents with ESL, scales, SignShop and POS systems; automa
 |---|---|
 | **Frontend** | TypeScript, React, Next.js, Tailwind, xterm.js |
 | **Backend** | Go, Python/FastAPI, Java/Spring Boot, Rust (Tauri), JWT, OpenAPI, Asynq |
-| **Data** | PostgreSQL, SQLite, SQL Server, MySQL, ClickHouse, S3/MinIO, IPFS |
+| **Data** | PostgreSQL, SQLite, SQL Server, MySQL, S3, IPFS |
 | **Desktop** | Tauri 2, Electron, PyInstaller |
 | **Integrations** | Zoho Books/Inventory, Auth.js, OAuth, Web Push, ClickUp |
 | **Delivery** | Docker, Railway, GitHub Actions, Playwright, Vitest, pytest |

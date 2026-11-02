@@ -77,7 +77,7 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:14px}
   </header>
 
   <section id="projects">
-    <h2>Recent projects</h2>
+    <h2>Active projects</h2>
     <div class="grid" id="grid"></div>
   </section>
 
@@ -110,7 +110,7 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:14px}
     <div class="skills">
       <div><b>Frontend</b><span>TypeScript, React, Next.js, Tailwind, xterm.js</span></div>
       <div><b>Backend</b><span>Go, Python/FastAPI, Java/Spring Boot, Rust, OpenAPI, Asynq</span></div>
-      <div><b>Data</b><span>PostgreSQL, SQLite, ClickHouse, SQL Server, S3/MinIO, IPFS</span></div>
+      <div><b>Data</b><span>PostgreSQL, SQLite, SQL Server, MySQL, S3, IPFS</span></div>
       <div><b>Desktop</b><span>Tauri 2, Electron, PyInstaller</span></div>
       <div><b>Integrations</b><span>Zoho Books/Inventory, Auth.js, OAuth, Web Push, ClickUp</span></div>
       <div><b>Delivery</b><span>Docker, Railway, GitHub Actions, Playwright, Vitest, pytest</span></div>
@@ -151,15 +151,7 @@ const P = [
   {t:"Personal Hub", m:"Household finance & scheduler · live on Railway",
    d:"Hub shared across multiple households: per-user finance tracking plus a shared calendar and to-do list.",
    b:["Cash flow, expenses, loans, subscriptions, goals","Households, invites, notifications, cron job","Installable PWA"],
-   s:["Next.js","Prisma","PostgreSQL","Auth.js","PWA"]},
-  {t:"DataForge", m:"Data engineering platform",
-   d:"Batch platform for a fictional retailer: Postgres → Airflow → MinIO → ClickHouse → FastAPI → React.",
-   b:["Bronze/silver/gold layers in object storage","Dashboard for revenue, order count, AOV, freshness and pipeline status","Generates 100k+ synthetic orders"],
-   s:["Airflow","ClickHouse","MinIO","FastAPI","Docker"]},
-  {t:"dc-bmad", u:"https://github.com/jtfrancisco0121/dc-bmad", m:"Agent workflow · Claude Code & Cursor",
-   d:"Plan → build → verify workflow with Planner, Dev, Reviewer, Auditor and Auto roles.",
-   b:["All state lives in files, so switching tools mid-project loses no context","The review step is never skipped, even in auto mode"],
-   s:["Claude Code","Cursor","Markdown"]}
+   s:["Next.js","Prisma","PostgreSQL","Auth.js","PWA"]}
 ];
 const esc = s => s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 document.getElementById("grid").innerHTML = P.map(p => `
