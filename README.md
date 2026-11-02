@@ -40,36 +40,6 @@ Internal operations system built on Zoho Books and Inventory.
 - Runs on Docker/Railway and also as a Windows desktop launcher (PyInstaller)
 - TMOps mirrors Zoho data into Postgres, so reports and dashboards don't use up API quota
 
-### 🧾 DC CRM — sales, procurement and BIR invoicing · *private, client work*
-`Next.js 16` `React 19` `Prisma 7` `PostgreSQL` `Auth.js v5` `Zod` `pdfme`
-
-Document and CRM system for a Philippine office-supplies distributor.
-- Quotations → Delivery Receipts → Sales Invoices → Collection Receipts, with stock movements and void/reopen
-- Purchase orders, a stock ledger, inventory valuation, and A/R aging
-- BIR sales and purchase books with VAT reports; tax rates are configurable instead of hardcoded
-- Visual print-template designer with millimetre calibration for pre-printed forms
-- Money stored as integer centavos, Zod-validated server actions, an audit log, and active-session management
-
-### 🏛️ Barangay Disbursement System — offline LGU desktop app · *private*
-`Electron` `React` `TypeScript` `Drizzle` `SQLite (sql.js)` `TanStack Query`
-
-Offline desktop app for preparing and printing LGU procurement and disbursement forms.
-- Imports barangay reference data from a legacy Access `.mdb` file
-- Template designer with overlay PDFs; templates can be exported into the installer so every PC gets the same forms
-- Local auth (bcrypt), hand-written migrations, database backups, and Windows NSIS and macOS DMG installers
-
-### 📄 Barangay Request Management System — web + offline editions · *private*
-`FastAPI` `PostgreSQL / SQLite` `React` `Electron` `PyInstaller` `pytest`
-
-Document requests for barangay offices.
-- **Web:** online submission, tracking numbers that don't expose personal data, staff approve/reject/release workflow, PDF generation, roles and an audit log
-- **Offline desktop:** a FastAPI sidecar packaged with PyInstaller inside Electron for offices without internet. Numbers carry a station prefix so several PCs never collide, and their exports can be merged later
-
-### 🏠 Personal Hub — household finance and scheduler · *private*
-`Next.js` `Prisma` `PostgreSQL` `Auth.js` `PWA` `Railway`
-
-Hub shared across multiple households: per-user finance (cash flow, expenses, loans, subscriptions, goals) plus a shared calendar and to-do list. Includes invites, notifications, and a cron job. Installable PWA, **live in production on Railway**.
-
 ---
 
 ## Professional work

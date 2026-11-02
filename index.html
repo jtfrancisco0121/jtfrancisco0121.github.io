@@ -135,23 +135,7 @@ const P = [
   {t:"TMZohoBooksInteg + TMOps", m:"Finance & operations system · Torrecamps Marketing",
    d:"Internal operations system built on Zoho Books and Inventory, with a Postgres mirror so reports don't use up API quota.",
    b:["Invoices, bills, stock, Daily Sales, A/R aging","PH BIR VAT/EWT reporting; payroll posted as Zoho expenses","Calibrated print layouts for invoices and cheques; PDF and Excel export; Windows launcher"],
-   s:["Python","FastAPI","PostgreSQL","WeasyPrint","Docker"]},
-  {t:"DC CRM", m:"Sales, procurement & BIR invoicing",
-   d:"Document and CRM system for a Philippine office-supplies distributor.",
-   b:["Quotation → Delivery Receipt → Sales Invoice → Collection Receipt","POs, stock ledger, inventory valuation, A/R aging, BIR books and VAT","Visual print-template designer with mm calibration; money stored as integer centavos; audit log"],
-   s:["Next.js 16","Prisma 7","PostgreSQL","Zod","pdfme"]},
-  {t:"Barangay Disbursement System", m:"Offline LGU desktop app",
-   d:"Offline Electron app for preparing and printing LGU procurement and disbursement forms.",
-   b:["Imports reference data from a legacy Access .mdb file","Overlay-PDF template designer; templates ship inside the installer","Windows NSIS and macOS DMG installers; local auth; backups"],
-   s:["Electron","React","Drizzle","SQLite"]},
-  {t:"Barangay Request Management", m:"Web + offline desktop editions",
-   d:"Document requests for barangay offices: online submission, tracking, staff workflow and PDF generation.",
-   b:["Tracking that doesn't expose personal data; roles and an audit log","Offline edition: FastAPI sidecar packaged with PyInstaller inside Electron","Station-prefixed numbering so several PCs never collide; exports merged later"],
-   s:["FastAPI","React","Electron","PostgreSQL","pytest"]},
-  {t:"Personal Hub", m:"Household finance & scheduler · live on Railway",
-   d:"Hub shared across multiple households: per-user finance tracking plus a shared calendar and to-do list.",
-   b:["Cash flow, expenses, loans, subscriptions, goals","Households, invites, notifications, cron job","Installable PWA"],
-   s:["Next.js","Prisma","PostgreSQL","Auth.js","PWA"]}
+   s:["Python","FastAPI","PostgreSQL","WeasyPrint","Docker"]}
 ];
 const esc = s => s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 document.getElementById("grid").innerHTML = P.map(p => `
