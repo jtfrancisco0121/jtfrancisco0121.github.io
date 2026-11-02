@@ -78,7 +78,29 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:14px}
 
   <section id="projects">
     <h2>Active projects</h2>
-    <div class="grid" id="grid"></div>
+    <div class="grid">
+      <article class="card feature">
+        <h3><a href="https://github.com/jtfrancisco0121/DCTerminalv2">DCTerminalv2</a><span class="tag pub">Public repo</span></h3>
+        <div class="meta">Desktop workspace for Claude Code agents · macOS &amp; Windows</div>
+        <p>A terminal app for Claude Code. Its Eagle-Eye pipeline plans a change, waits for your approval, builds it in parallel git worktrees, reviews it, and opens PRs only after you approve.</p>
+        <ul><li>Tabs and split panes, a command palette, and per-tab “needs you” status with desktop and phone push notifications</li><li>Run panel with stages, per-PR progress, CI checks, review gates, cost and timeline</li><li>ClickUp integration, a bundled Claude Code plugin with role skills, and a worktree guard plus keychain-stored secrets</li></ul>
+        <div class="chips"><span class="chip">Rust</span><span class="chip">Tauri 2</span><span class="chip">React</span><span class="chip">xterm.js</span><span class="chip">TypeScript</span></div>
+      </article>
+      <article class="card">
+        <h3>TMEcommWeb<span class="tag">Private</span></h3>
+        <div class="meta">B2B ordering portal · Torrecamps Marketing</div>
+        <p>Customer ordering portal with an admin portal that requires Zoho sign-in.</p>
+        <ul><li>Approved registrations become Zoho Contacts; each customer has their own price book</li><li>Admins create Zoho Books draft invoices from submitted orders</li><li>Messaging, Web Push, PWA, stock sync, and a shared daily Zoho API budget</li><li>About 400 Vitest and Playwright tests</li></ul>
+        <div class="chips"><span class="chip">Next.js 15</span><span class="chip">Drizzle</span><span class="chip">PostgreSQL</span><span class="chip">Auth.js</span><span class="chip">Railway</span></div>
+      </article>
+      <article class="card">
+        <h3>TMZohoBooksInteg + TMOps<span class="tag">Private</span></h3>
+        <div class="meta">Finance &amp; operations system · Torrecamps Marketing</div>
+        <p>Internal operations system built on Zoho Books and Inventory, with a Postgres mirror so reports don't use up API quota.</p>
+        <ul><li>Invoices, bills, stock, Daily Sales, A/R aging</li><li>PH BIR VAT/EWT reporting; payroll posted as Zoho expenses</li><li>Calibrated print layouts for invoices and cheques; PDF and Excel export; Windows launcher</li></ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">WeasyPrint</span><span class="chip">Docker</span></div>
+      </article>
+    </div>
   </section>
 
   <section>
@@ -123,30 +145,6 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:14px}
 </div>
 
 <script>
-const P = [
-  {f:1, t:"DCTerminalv2", u:"https://github.com/jtfrancisco0121/DCTerminalv2", m:"Desktop workspace for Claude Code agents · macOS & Windows",
-   d:"A terminal app for Claude Code. Its Eagle-Eye pipeline plans a change, waits for your approval, builds it in parallel git worktrees, reviews it, and opens PRs only after you approve.",
-   b:["Tabs and split panes, a command palette, and per-tab “needs you” status with desktop and phone push notifications","Run panel with stages, per-PR progress, CI checks, review gates, cost and timeline","ClickUp integration, a bundled Claude Code plugin with role skills, and a worktree guard plus keychain-stored secrets"],
-   s:["Rust","Tauri 2","React","xterm.js","TypeScript"]},
-  {t:"TMEcommWeb", m:"B2B ordering portal · Torrecamps Marketing",
-   d:"Customer ordering portal with an admin portal that requires Zoho sign-in.",
-   b:["Approved registrations become Zoho Contacts; each customer has their own price book","Admins create Zoho Books draft invoices from submitted orders","Messaging, Web Push, PWA, stock sync, and a shared daily Zoho API budget","About 400 Vitest and Playwright tests"],
-   s:["Next.js 15","Drizzle","PostgreSQL","Auth.js","Railway"]},
-  {t:"TMZohoBooksInteg + TMOps", m:"Finance & operations system · Torrecamps Marketing",
-   d:"Internal operations system built on Zoho Books and Inventory, with a Postgres mirror so reports don't use up API quota.",
-   b:["Invoices, bills, stock, Daily Sales, A/R aging","PH BIR VAT/EWT reporting; payroll posted as Zoho expenses","Calibrated print layouts for invoices and cheques; PDF and Excel export; Windows launcher"],
-   s:["Python","FastAPI","PostgreSQL","WeasyPrint","Docker"]}
-];
-const esc = s => s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-document.getElementById("grid").innerHTML = P.map(p => `
-  <article class="card${p.f ? " feature" : ""}">
-    <h3>${p.u ? `<a href="${p.u}">${esc(p.t)}</a>` : esc(p.t)}<span class="tag${p.u ? " pub" : ""}">${p.u ? "Public repo" : "Private"}</span></h3>
-    <div class="meta">${esc(p.m)}</div>
-    <p>${esc(p.d)}</p>
-    <ul>${p.b.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
-    <div class="chips">${p.s.map(x => `<span class="chip">${esc(x)}</span>`).join("")}</div>
-  </article>`).join("");
-
 const root = document.documentElement, KEY = "theme";
 try { const t = localStorage.getItem(KEY); if (t) root.dataset.theme = t; } catch (e) {}
 document.getElementById("theme").onclick = () => {
