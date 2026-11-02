@@ -2,7 +2,7 @@
 
 **Senior Full-Stack Developer** · Go · TypeScript/React · Python/FastAPI · Rust · Java/Spring Boot
 
-📧 jtfrancisco21@gmail.com · 🐙 [github.com/jtfrancisco0121](https://github.com/jtfrancisco0121) · 🌐 [Portfolio site](https://jtfrancisco0121.github.io/)
+📧 jtfrancisco21@gmail.com · 🐙 [github.com/jtfrancisco0121](https://github.com/jtfrancisco0121) · 🌐 [Portfolio site](https://jtfrancisco0121.github.io/) · 📄 [Download CV (PDF)](assets/Jan-Terence-Francisco-CV.pdf)
 
 I own systems end to end: I write the spec, build it across the backend, web and desktop, and put tests and release gates around it. Lately I ship production apps for small businesses and local government in the Philippines, and I build my own tooling for AI-assisted development.
 
