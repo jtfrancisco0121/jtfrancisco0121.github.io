@@ -39,7 +39,7 @@ Internal operations system built on the Zoho Books and Inventory APIs.
 - Print layouts with calibration for pre-printed invoices, receipts and cheques; PDF and Excel export
 - Runs on Docker/Railway and also as a Windows desktop launcher (PyInstaller)
 
-### 🛍️ Essento — retail online shop · *private, standalone product · in development*
+### 🛍️ Essento — retail online shop · [essentoph.com](https://essentoph.com) · *live, standalone product (private repo)*
 `Next.js 15` `TypeScript` `Drizzle` `PostgreSQL` `Playwright` `Railway`
 
 Online shop for everyday supplies for Metro Manila shoppers. It is spec-driven: an approved PRD, architecture and UX spec, split into stories that each have to pass a single `npm run verify` gate. It is built with DCTerminalv2's plan → build → review pipeline.
