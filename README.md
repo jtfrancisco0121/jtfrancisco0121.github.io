@@ -63,7 +63,7 @@ Owned **DATARK** end to end across a Go backend and TypeScript web and desktop a
 TMEcommWeb and TMZohoBooksInteg (see above).
 
 ### Philtech Inc. — Software Engineer I *(Sept 2024 – Oct 2025)*
-Resolved production incidents with ESL, scales, SignShop and POS systems; automated tag forecasting and ESL monitoring that catches stuck HOST→Aperion batches; built a Python queue/wait-time dashboard.
+Resolved production incidents with ESL, scales, SignShop and POS systems (tracked in ServiceNow); automated tag forecasting and ESL monitoring that catches stuck HOST→Aperion batches; built a Python queue/wait-time dashboard.
 
 ---
 
