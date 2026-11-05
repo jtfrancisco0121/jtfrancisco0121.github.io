@@ -52,8 +52,8 @@ Online shop for everyday supplies for Metro Manila shoppers. It is spec-driven: 
 
 ## Professional work
 
-### Koneksi Inc. — Senior Fullstack Developer *(Oct 2025 – present)*
-Own **DATARK** end to end across a Go backend and TypeScript web and desktop apps.
+### Koneksi Inc. — Senior Fullstack Developer *(Oct 2025 – Oct 2026)*
+Owned **DATARK** end to end across a Go backend and TypeScript web and desktop apps.
 - **File Disaster Recovery & Compliance:** scoring engine, control matrix, audit ledger, Korean PDF reports, Org Admin dashboard, on-demand recovery testing, retention, and file preview
 - **Notification system** on Asynq/AsynqMon with delivery separated by role, plus role-based onboarding
 - Storage reliability: S3 gateway and credentials redesign; realtime-backup recovery (CID correctness, retry/backoff, resumable downloads)
