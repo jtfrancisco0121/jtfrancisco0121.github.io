@@ -73,7 +73,7 @@ Resolved production incidents with ESL, scales, SignShop and POS systems; automa
 |---|---|
 | **Frontend** | TypeScript, React, Next.js, Tailwind, xterm.js |
 | **Backend** | Go, Python/FastAPI, Java/Spring Boot, Rust (Tauri), JWT, OpenAPI, Asynq |
-| **Data** | PostgreSQL, SQLite, SQL Server, MySQL, S3, IPFS |
+| **Data** | PostgreSQL, SQLite, SQL Server, IBM DB2, MySQL, S3, IPFS |
 | **Desktop** | Tauri 2, Electron, PyInstaller |
 | **Integrations** | Zoho Books/Inventory, Auth.js, OAuth, Web Push, ClickUp |
 | **Delivery** | Docker, Railway, GitHub Actions, Playwright, Vitest, pytest |
