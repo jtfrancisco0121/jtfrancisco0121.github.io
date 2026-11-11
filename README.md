@@ -79,6 +79,9 @@ Resolved production incidents with ESL, scales, SignShop and POS systems (tracke
 | **Delivery** | Docker, Railway, GitHub Actions, Playwright, Vitest, pytest |
 | **AI-assisted engineering** | Claude Code, Cursor, spec-to-code loops, agent handoffs, review gates |
 
+## Certifications
+**Claude Certified Developer – Foundations**, Anthropic (issued Nov 2026, valid until Nov 2027) · [verify on Credly](https://www.credly.com/badges/7d83b3b6-f089-4878-b3e2-d27658593a68)
+
 ## Education
 **BS Information Technology — Mobile and Internet Technologies**, Asia Pacific College (2019–2024)
 

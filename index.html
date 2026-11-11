@@ -133,6 +133,11 @@ h2{font:700 clamp(30px,4vw,42px)/1.1 "Space Grotesk",sans-serif;letter-spacing:-
 .card.wide{grid-column:1/-1}
 .wide-body{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
 .badge.dev{color:var(--amber);border-color:color-mix(in srgb,var(--amber) 40%,transparent)}
+.cert{display:flex;align-items:center;gap:22px;margin-top:18px}
+.cert img{width:96px;height:96px;flex:none}
+.cert h4{margin:4px 0 2px;font:600 18px "Space Grotesk",sans-serif}
+.cert p{margin:0;color:var(--muted);font-size:14px}
+.cert .link-arrow{margin-top:8px}
 
 .flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:14px;margin:0 0 22px;border-radius:12px;background:color-mix(in srgb,var(--bg) 60%,transparent);border:1px dashed var(--border-strong);font:500 12px "JetBrains Mono",monospace}
 .flow .n{padding:6px 10px;border-radius:7px;background:var(--surface-solid);border:1px solid var(--border-strong);color:var(--text)}
@@ -188,6 +193,7 @@ html:not(.js) .term-body .l{opacity:1}
   .nav-links{gap:14px}
   .skills{grid-template-columns:1fr}
   .card{padding:22px}
+  .cert{flex-direction:column;align-items:flex-start}
   .stat b{font-size:28px}
   section{padding:56px 0}
   .term-body{font-size:11.5px;padding:14px}
@@ -389,7 +395,7 @@ html:not(.js) .term-body .l{opacity:1}
   <section id="skills">
     <div class="sec-head reveal">
       <div><div class="kicker">// toolbox</div><h2>What I work with</h2></div>
-      <p>BS IT, Mobile &amp; Internet Technologies · Asia Pacific College, 2024</p>
+      <p>BS IT, Mobile &amp; Internet Technologies · Asia Pacific College, 2024 · Claude Certified Developer – Foundations</p>
     </div>
     <div class="skills">
       <div class="skill reveal"><h4><i>🎨</i>Frontend</h4><div class="chips"><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Tailwind</span><span class="chip">xterm.js</span></div></div>
@@ -400,6 +406,15 @@ html:not(.js) .term-body .l{opacity:1}
       <div class="skill reveal"><h4><i>🚀</i>Delivery</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Railway</span><span class="chip">GitHub Actions</span><span class="chip">Playwright</span><span class="chip">Vitest</span><span class="chip">pytest</span></div></div>
     </div>
     <div class="skill reveal" style="margin-top:18px"><h4><i>🤖</i>AI-assisted engineering</h4><div class="chips"><span class="chip">Claude Code</span><span class="chip">Cursor</span><span class="chip">Spec-to-code loops</span><span class="chip">Agent handoffs</span><span class="chip">Review gates</span><span class="chip">AI-assisted test generation</span></div></div>
+    <div class="skill cert reveal">
+      <img src="assets/claude-certified-developer-foundations.png" alt="Claude Certified Developer – Foundations badge" width="96" height="96" loading="lazy">
+      <div>
+        <div class="kicker">// certification</div>
+        <h4>Claude Certified Developer – Foundations</h4>
+        <p>Anthropic · Issued Nov 2026 · Valid until Nov 2027</p>
+        <a class="link-arrow" href="https://www.credly.com/badges/7d83b3b6-f089-4878-b3e2-d27658593a68" data-goatcounter-click="cert-claude-credly">Verify on Credly →</a>
+      </div>
+    </div>
   </section>
 
   <section>
