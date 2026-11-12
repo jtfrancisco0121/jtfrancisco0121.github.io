@@ -6,6 +6,8 @@
 
 I own systems end to end: I write the spec, build it across the backend, web and desktop, and put tests and release gates around it. Lately I ship production apps for small businesses and local government in the Philippines, and I build my own tooling for AI-assisted development.
 
+**Highlights:** 300+ Playwright E2E tests gating releases (Koneksi) · ~400 Vitest & Playwright tests on a client portal (TMEcommWeb) · 1,000+ catalog items imported to a live store (Essento) · 4 languages in production (Go, TypeScript, Python, Rust)
+
 ---
 
 ## Active projects
@@ -19,6 +21,8 @@ A macOS and Windows terminal app for Claude Code. Its **Eagle-Eye** pipeline pla
 - ClickUp integration: paste a ticket or epic link to start a run, then post results back to it
 - A bundled Claude Code plugin with role skills (planner, developer, PR reviewer, codebase audit)
 - Safety: a guard keeps agents inside their worktree, nothing is pushed without approval, and secrets stay in the OS keychain
+
+<img src="assets/shots/dct-newrun.jpg" alt="DCTerminalv2 New run screen: folder picker, task description, ClickUp tickets, review on GitHub option, BMAD planning and role buttons" width="420">
 
 *Second version of [DCTerminal](https://github.com/jtfrancisco0121/DCTerminal), a role-per-tab agent workspace with hand-offs and autopilot pipelines.*
 
@@ -35,6 +39,7 @@ Customer ordering portal with an admin portal that requires Zoho sign-in.
 `Python` `FastAPI` `WeasyPrint` `openpyxl` `Docker` `PyInstaller`
 
 Internal operations system built on the Zoho Books and Inventory APIs.
+- A home screen that shows what needs attention today: overdue receivables, stock outs, bills due
 - Invoices, bills and stock; Daily Sales; A/R aging; **PH BIR VAT/EWT** reporting; payroll posted as Zoho expenses
 - Print layouts with calibration for pre-printed invoices, receipts and cheques; PDF and Excel export
 - Runs on Docker/Railway and also as a Windows desktop launcher (PyInstaller)
@@ -48,6 +53,8 @@ Online shop for everyday supplies for Metro Manila shoppers. It is spec-driven: 
 - Admin tools: bulk price changes, price history, margins, publish/unpublish and order status workflow
 - Versioned policy pages, an email outbox, and automatic anonymization of personal data after the retention period
 
+<img src="assets/shots/essento.jpg" alt="Essento storefront: search bar, category filters, headline 'Everyday essentials, delivered to your door' and category cards" width="720">
+
 ---
 
 ## Professional work
@@ -60,7 +67,7 @@ Owned **DATARK** end to end across a Go backend and TypeScript web and desktop a
 - **300+ Playwright desktop E2E tests** in CI as a release gate; promo/billing and timezone fixes; JWT/service-account APIs, OpenAPI
 
 ### Torrecamps Marketing — Software Consultant *(May 2026 – present)*
-TMEcommWeb and TMZohoBooksInteg (see above).
+Built and run TMEcommWeb and TMZohoBooksInteg in production on Railway (see above); from May to Oct 2026 this ran alongside the Koneksi role. Wrote specs and agent handoffs for AI-assisted delivery, with human review before every merge.
 
 ### Philtech Inc. — Software Engineer I *(Sept 2024 – Oct 2025)*
 Resolved production incidents with ESL, scales, SignShop and POS systems (tracked in ServiceNow); automated tag forecasting (Java 17) and ESL monitoring that catches stuck HOST→Aperion batches; built a Python queue/wait-time dashboard.
@@ -69,15 +76,15 @@ Resolved production incidents with ESL, scales, SignShop and POS systems (tracke
 
 ## Skills
 
-| | |
-|---|---|
-| **Frontend** | TypeScript, React, Next.js, Tailwind, xterm.js |
-| **Backend** | Go, Python/FastAPI, Java/Spring Boot, Rust (Tauri), JWT, OpenAPI, Asynq |
-| **Data** | PostgreSQL, SQLite, SQL Server, IBM DB2, MySQL, S3, IPFS |
-| **Desktop** | Tauri 2, Electron, PyInstaller |
-| **Integrations** | Zoho Books/Inventory, Auth.js, OAuth, Web Push, ClickUp |
-| **Delivery** | Docker, Railway, GitHub Actions, Playwright, Vitest, pytest |
-| **AI-assisted engineering** | Claude Code, Cursor, spec-to-code loops, agent handoffs, review gates |
+| | Tools | Used in |
+|---|---|---|
+| **Frontend** | TypeScript, React, Next.js, Tailwind, xterm.js | Essento, TMEcommWeb, DCTerminalv2, DATARK web |
+| **Backend** | Go, Python/FastAPI, Java/Spring Boot, Rust (Tauri), JWT, OpenAPI, Asynq | DATARK (Go, Asynq), TMZohoBooksInteg (FastAPI), DCTerminalv2 (Rust), Philtech (Java 17) |
+| **Data** | PostgreSQL, SQLite, SQL Server, IBM DB2, MySQL, S3, IPFS | PostgreSQL in Essento and TMEcommWeb; S3 in DATARK |
+| **Desktop** | Tauri 2, Electron, PyInstaller | DCTerminalv2, DATARK desktop, TMZohoBooksInteg launcher |
+| **Integrations** | Zoho Books/Inventory, Auth.js, OAuth, Web Push, ClickUp | TMZohoBooksInteg, TMEcommWeb, DCTerminalv2 |
+| **Delivery** | Docker, Railway, GitHub Actions, Playwright, Vitest, pytest | 300+ E2E at Koneksi; ~400 tests on TMEcommWeb; Railway for Torrecamps apps |
+| **AI-assisted engineering** | Claude Code, Cursor, spec-to-code loops, agent handoffs, review gates | DCTerminalv2, Essento, Torrecamps delivery |
 
 ## Certifications
 **Claude Certified Developer – Foundations**, Anthropic (issued Nov 2026, valid until Nov 2027) · [verify on Credly](https://www.credly.com/badges/7d83b3b6-f089-4878-b3e2-d27658593a68)
