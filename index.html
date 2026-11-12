@@ -13,7 +13,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='28' fill='%2367e8f9'%3EJT%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0b0f17; --bg-2:#0f1520; --surface:rgba(255,255,255,.035); --surface-solid:#121a27;
@@ -23,6 +23,7 @@
   --grad:linear-gradient(120deg,var(--cyan),var(--violet) 55%,var(--pink));
   --glow-1:rgba(103,232,249,.16); --glow-2:rgba(167,139,250,.16);
   --term-bg:#0a0e15; --shadow:0 20px 60px -20px rgba(0,0,0,.6);
+  color-scheme:dark;
 }
 :root[data-theme="light"]{
   --bg:#f6f7fb; --bg-2:#eef1f7; --surface:rgba(255,255,255,.75); --surface-solid:#ffffff;
@@ -30,7 +31,7 @@
   --text:#0f172a; --muted:#516075; --faint:#8a96a8;
   --cyan:#0891b2; --violet:#7c3aed; --pink:#db2777; --green:#16a34a; --amber:#d97706;
   --glow-1:rgba(8,145,178,.12); --glow-2:rgba(124,58,237,.10);
-  --term-bg:#0f1520; --shadow:0 20px 50px -24px rgba(15,23,42,.25);
+  --term-bg:#0f1520; --shadow:0 20px 50px -24px rgba(15,23,42,.25); color-scheme:light;
 }
 @media (prefers-color-scheme: light){
   :root:not([data-theme="dark"]){
@@ -39,7 +40,7 @@
     --text:#0f172a; --muted:#516075; --faint:#8a96a8;
     --cyan:#0891b2; --violet:#7c3aed; --pink:#db2777; --green:#16a34a; --amber:#d97706;
     --glow-1:rgba(8,145,178,.12); --glow-2:rgba(124,58,237,.10);
-    --term-bg:#0f1520; --shadow:0 20px 50px -24px rgba(15,23,42,.25);
+    --term-bg:#0f1520; --shadow:0 20px 50px -24px rgba(15,23,42,.25); color-scheme:light;
   }
 }
 *{box-sizing:border-box}
@@ -170,7 +171,7 @@ h2{font:700 clamp(30px,4vw,42px)/1.1 "Space Grotesk",sans-serif;letter-spacing:-
 .contact .cta{justify-content:center}
 footer{padding:40px 0 56px;color:var(--faint);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
-.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal{transform:translateY(14px);transition:transform .7s ease}
 .js .reveal.in{opacity:1;transform:none}
 html:not(.js) .term-body .l{opacity:1}
 @media (prefers-reduced-motion: reduce){
@@ -198,6 +199,103 @@ html:not(.js) .term-body .l{opacity:1}
   section{padding:56px 0}
   .term-body{font-size:11.5px;padding:14px}
 }
+
+/* ===== hybrid additions ===== */
+.icon-btn.lbl{width:auto;padding:0 12px 0 10px;gap:7px;display:inline-flex;align-items:center;font:500 12.5px "JetBrains Mono",monospace}
+.creds{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px 18px;font:500 12.5px "JetBrains Mono",monospace;color:var(--faint)}
+.creds a{color:var(--cyan)}
+.stat{display:grid;gap:4px;align-content:start;transition:background .2s}
+a.stat:hover{background:var(--surface-solid)}
+.stat em{font:normal 500 12px "JetBrains Mono",monospace;color:var(--cyan);margin-top:4px}
+/* screens inside cards */
+.screens{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;margin-top:28px;padding-top:26px;border-top:1px dashed var(--border-strong);grid-column:1/-1}
+.screens.one{grid-template-columns:1fr}
+figure{margin:0;display:grid;gap:8px;min-width:0}
+figcaption{font:12px "JetBrains Mono",monospace;color:var(--faint)}
+.shot{border-radius:12px;border:1px solid var(--border-strong);overflow:hidden;background:var(--term-bg);box-shadow:var(--shadow);container-type:inline-size}
+.shot .term-bar{margin:0}
+.shot img{display:block;width:100%;height:auto}
+.shot.tall img{aspect-ratio:880/760;object-fit:cover;object-position:top}
+.feature{grid-template-columns:1fr 1fr}
+.wide-body.media{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);align-items:start}
+.card .chips{position:relative}
+/* lanes */
+.lanes{border-radius:16px;border:1px solid var(--border);background:var(--surface);padding:22px;margin-bottom:40px;overflow-x:auto}
+.lane-grid{display:grid;grid-template-columns:160px minmax(0,1fr);gap:12px 18px;align-items:center;min-width:560px}
+.lane-grid .nm{font:600 14.5px "Space Grotesk",sans-serif}
+.lane-grid .nm small{display:block;font:400 12.5px Inter,sans-serif;color:var(--muted)}
+.track{position:relative;height:28px;border-radius:8px;background:color-mix(in srgb,var(--bg) 70%,transparent);border:1px solid var(--border)}
+.lbar{position:absolute;top:2px;bottom:2px;border-radius:6px;font:600 11px/24px "JetBrains Mono",monospace;color:#0b0f17;padding-left:9px;white-space:nowrap;overflow:hidden}
+.lbar.c{background:var(--cyan)}.lbar.v{background:var(--violet)}.lbar.p{background:var(--pink)}
+.lbar.open{background-image:linear-gradient(90deg,transparent 70%,color-mix(in srgb,var(--bg) 35%,transparent))}
+.axis{display:flex;justify-content:space-between;font:11.5px "JetBrains Mono",monospace;color:var(--faint)}
+.lanes-note{font-size:13.5px;color:var(--muted);margin-top:12px}
+/* skills: where used */
+.skill .used{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border-strong);font-size:13px;color:var(--muted)}
+.skill .used b{font:500 11px "JetBrains Mono",monospace;color:var(--faint);text-transform:uppercase;letter-spacing:.08em;margin-right:6px}
+.skill h4 i{font:600 12px "JetBrains Mono",monospace!important;color:var(--violet)}
+/* contact */
+.mailbox{display:inline-block;font:500 clamp(16px,2.6vw,22px) "JetBrains Mono",monospace;user-select:all;padding:10px 16px;border-radius:10px;border:1px dashed var(--border-strong);background:color-mix(in srgb,var(--bg) 50%,transparent);margin-bottom:22px;overflow-wrap:anywhere}
+.copied{display:block;margin-top:12px;font:12.5px "JetBrains Mono",monospace;color:var(--green);min-height:1.2em}
+@media (max-width:900px){.screens,.wide-body.media{grid-template-columns:1fr}}
+/* Eagle-Eye run illustration (picture of the app: fixed palette) */
+.rp{--r-bg:#262833;--r-panel:#2e3040;--r-ink:#e7e8ef;--r-mu:#a3a6b8;--r-line:#3b3e50;--r-ok:#5bd08a;--r-run:#b48cff;--r-ex:#e8b04a;
+  background:var(--r-bg);color:var(--r-ink);font:12px/1.5 "JetBrains Mono",monospace;padding:14px;display:grid;gap:12px}
+.rp .t{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.rp .t b{font-weight:600}
+.rp .ex{color:var(--r-ex)}
+.rp .stg{display:flex;flex-wrap:wrap;gap:4px 8px;color:var(--r-mu)}
+.rp .stg .ok{color:var(--r-ok)} .rp .stg .run{color:var(--r-run);font-weight:600}
+.rp .prs{display:grid;gap:7px;background:var(--r-panel);border-radius:8px;padding:10px}
+.rp .pr{display:grid;grid-template-columns:40px minmax(0,1fr) 70px;gap:8px;align-items:center}
+.rp .trk{height:6px;border-radius:3px;background:var(--r-line);overflow:hidden}
+.rp .trk span{display:block;height:100%;background:var(--r-ok)}
+.rp .trk span.r{background:var(--r-run)}
+.rp .pr em{font-style:normal;color:var(--r-mu);text-align:right}
+.rp ul{list-style:none;margin:0;padding:0;display:grid;gap:3px;color:var(--r-mu)}
+.rp li b{color:var(--r-ink);font-weight:500}
+.rp li .run{color:var(--r-run)}
+.rp .gate{border:1px dashed var(--r-line);border-radius:8px;padding:8px 10px;color:var(--r-mu)}
+.rp .gate b{color:var(--r-ink)}
+
+/* Finance dashboard illustration (picture of the app: fixed palette) */
+.fx{--f-bg:#0f1f1d;--f-side:#0c1918;--f-card:#15292a;--f-line:#22393a;--f-ink:#e9efe9;--f-mu:#93a8a3;--f-teal:#6cc7b5;--f-gold:#e7b04c;--f-red:#e5807a;
+  background:var(--f-bg);color:var(--f-ink);font:12px/1.45 Inter,system-ui,sans-serif;display:grid;grid-template-columns:150px minmax(0,1fr)}
+.fx .side{background:var(--f-side);border-right:1px solid var(--f-line);padding:14px 10px;display:grid;gap:3px;align-content:start;font-size:11.5px;color:var(--f-mu)}
+.fx .side .brand{display:flex;gap:8px;align-items:center;color:var(--f-ink);font-weight:600;margin-bottom:10px}
+.fx .side .brand i{width:22px;height:22px;border-radius:6px;background:var(--f-card);border:1px solid var(--f-line);display:grid;place-items:center;font:600 9px "JetBrains Mono",monospace;font-style:normal;color:var(--f-gold)}
+.fx .side .grp{font:600 9px "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;margin:8px 0 2px;opacity:.8}
+.fx .side span{padding:4px 8px;border-radius:6px}
+.fx .side span.on{background:var(--f-card);color:var(--f-ink);box-shadow:inset 2px 0 0 var(--f-gold)}
+.fx .main{padding:16px;display:grid;gap:12px;min-width:0}
+.fx .hd small{font:600 9.5px "JetBrains Mono",monospace;letter-spacing:.12em;color:var(--f-mu);text-transform:uppercase}
+.fx .hd b{display:block;font:500 1.6rem/1.1 "Newsreader",Georgia,serif;letter-spacing:-.01em;margin:2px 0}
+.fx .hd span{color:var(--f-mu)}
+.fx .row{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:10px}
+.fx .cd{background:var(--f-card);border:1px solid var(--f-line);border-radius:10px;padding:12px;display:grid;gap:6px;align-content:start;min-width:0}
+.fx .lb{display:flex;justify-content:space-between;gap:6px;font:600 9.5px "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--f-mu)}
+.fx .pill{font:500 9.5px "JetBrains Mono",monospace;letter-spacing:0;text-transform:none;padding:2px 7px;border-radius:999px;border:1px solid rgba(231,176,76,.45);color:var(--f-gold)}
+.fx .pill.r{border-color:rgba(229,128,122,.45);color:var(--f-red)}
+.fx .big{font:500 1.9rem/1 "Newsreader",Georgia,serif;font-variant-numeric:tabular-nums}
+.fx .big small{font-size:.55em;color:var(--f-mu)}
+.fx svg{width:100%;height:auto;display:block}
+.fx .nd{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:center;padding:7px 0;border-top:1px solid var(--f-line)}
+.fx .nd i{width:22px;height:22px;border-radius:6px;display:block;background:rgba(229,128,122,.18);border:1px solid rgba(229,128,122,.4)}
+.fx .nd i.w{background:rgba(231,176,76,.16);border-color:rgba(231,176,76,.4)}
+.fx .nd b{font:500 1rem "Newsreader",Georgia,serif}
+.fx .nd small{display:block;color:var(--f-mu)}
+.fx .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.fx .tiles .big{font-size:1.15rem}
+.fx .up{color:var(--f-teal);font:10.5px "JetBrains Mono",monospace} .fx .dn{color:var(--f-red);font:10.5px "JetBrains Mono",monospace}
+.fx .act{display:grid;gap:0}
+.fx .act div{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:8px;padding:6px 0;border-top:1px solid var(--f-line);align-items:baseline}
+.fx .act div span:first-child{color:var(--f-mu);font:10.5px "JetBrains Mono",monospace}
+.fx .act div span:last-child{font:500 .95rem "Newsreader",Georgia,serif}
+@container (max-width:620px){
+  .fx{grid-template-columns:1fr} .fx .side{display:none}
+  .fx .row{grid-template-columns:1fr} .fx .tiles{grid-template-columns:1fr 1fr}
+}
+
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -211,9 +309,10 @@ html:not(.js) .term-body .l{opacity:1}
       <a href="#work" class="hide-sm">Work</a>
       <a href="#experience" class="hide-sm">Experience</a>
       <a href="#skills" class="hide-sm">Skills</a>
+      <a href="#contact" class="hide-sm">Contact</a>
       <a href="assets/Jan-Terence-Francisco-CV.pdf" download data-goatcounter-click="cv-download">CV</a>
-      <button class="icon-btn" id="theme" aria-label="Toggle light and dark theme">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <button class="icon-btn lbl" id="theme" aria-label="Toggle light and dark theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span id="themeLbl">dark</span>
       </button>
     </div>
   </div>
@@ -234,6 +333,7 @@ html:not(.js) .term-body .l{opacity:1}
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 00-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 015.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0012 .5z"/></svg>GitHub</a>
       </div>
       <div class="stack-line"><span>Go</span><span>TypeScript / React</span><span>Python / FastAPI</span><span>Rust / Tauri</span></div>
+      <div class="creds"><span>✓ Claude Certified Developer – Foundations · <a href="https://www.credly.com/badges/7d83b3b6-f089-4878-b3e2-d27658593a68" data-goatcounter-click="cert-claude-credly">verify</a></span><span>✓ BS IT, Asia Pacific College, 2024</span></div>
     </div>
     <div class="term reveal" role="img" aria-label="Illustration of a terminal session">
       <div class="term-bar"><i></i><i></i><i></i><span>~/jtfrancisco — zsh</span></div>
@@ -255,10 +355,10 @@ html:not(.js) .term-body .l{opacity:1}
   </header>
 
   <div class="stats reveal">
-    <div class="stat"><b class="grad-text">2+ yrs</b><span>shipping production software</span></div>
-    <div class="stat"><b class="grad-text">300+</b><span>Playwright E2E tests gating releases</span></div>
-    <div class="stat"><b class="grad-text">~400</b><span>Vitest &amp; Playwright tests on a client portal</span></div>
-    <div class="stat"><b class="grad-text">4</b><span>languages in production: Go, TS, Python, Rust</span></div>
+    <a class="stat" href="#experience"><b class="grad-text">300+</b><span>Playwright E2E tests gating releases</span><em>Koneksi · DATARK →</em></a>
+    <a class="stat" href="#p-tmecomm"><b class="grad-text">~400</b><span>Vitest &amp; Playwright tests on a client portal</span><em>TMEcommWeb →</em></a>
+    <a class="stat" href="#p-essento"><b class="grad-text">1,000+</b><span>catalog items imported to a live store</span><em>Essento →</em></a>
+    <a class="stat" href="#skills"><b class="grad-text">4</b><span>languages in production: Go, TS, Python, Rust</span><em>Toolbox →</em></a>
   </div>
 
   <section id="work">
@@ -297,57 +397,147 @@ html:not(.js) .term-body .l{opacity:1}
 <div class="l on"><span class="c-mu">checks 14/14 · 6m 12s</span></div>
         </div>
       </div>
+      <div class="screens">
+        <figure>
+          <div class="shot"><div class="term-bar"><i></i><i></i><i></i><span>Eagle-Eye · run panel</span></div>
+            <div class="rp" role="img" aria-label="Illustration of an Eagle-Eye run: planning and plan approval done, building 2 of 3 PRs, ship approval waiting">
+                <div class="t"><b>Eagle-Eye · example-repo</b><span class="ex">sample data</span></div>
+                <div class="stg"><span class="ok">✓ Planning</span><span>—</span><span class="ok">✓ Plan approval (you)</span><span>—</span><span class="run">● Building 2/3 PRs</span><span>—</span><span>○ Ship approval (you)</span><span>—</span><span>○ Done</span></div>
+                <div class="prs">
+                  <div class="pr"><span>pr-1</span><div class="trk"><span style="width:100%"></span></div><em>reviewed</em></div>
+                  <div class="pr"><span>pr-2</span><div class="trk"><span style="width:100%"></span></div><em>reviewing</em></div>
+                  <div class="pr"><span>pr-3</span><div class="trk"><span class="r" style="width:64%"></span></div><em>building</em></div>
+                </div>
+                <ul>
+                  <li><b>implementer</b> · PR3 implement — <span class="run">running</span></li>
+                  <li><b>pr-reviewer</b> · PR2 review round 1 — <span class="run">running</span></li>
+                  <li><b>pr-reviewer</b> · PR1 review round 1 — completed</li>
+                  <li><b>risk-reviewer</b> · Risk review — completed</li>
+                  <li><b>plan-reviewer</b> · Plan review — completed</li>
+                  <li><b>planner</b> · Write plan.md — completed</li>
+                </ul>
+                <div class="gate">Next gate: <b>Ship approval</b>. No PR opens until you say so.</div>
+              </div>
+          </div>
+          <figcaption>The real run panel, redrawn with sample data</figcaption>
+        </figure>
+        <figure>
+          <div class="shot tall"><div class="term-bar"><i></i><i></i><i></i><span>New run</span></div>
+            <img src="assets/shots/dct-newrun.jpg" alt="DCTerminalv2 New run screen: folder picker, task description, ClickUp tickets, review on GitHub option, BMAD planning, Start Eagle-Eye button and role buttons" width="880" height="1180" loading="lazy">
+          </div>
+          <figcaption>Starting a run · screenshot</figcaption>
+        </figure>
+      </div>
     </article>
 
     <div class="grid2">
-      <article class="card reveal">
-        <span class="spot"></span>
-        <div class="card-top"><span class="kicker">CLIENT · B2B COMMERCE</span><span class="badge">Private</span></div>
-        <h3>TMEcommWeb</h3>
-        <div class="sub">Customer ordering portal · Torrecamps Marketing</div>
-        <div class="flow"><span class="n">Customer</span><span class="ar">→</span><span class="n">Order</span><span class="ar">→</span><span class="n">Admin review</span><span class="ar">→</span><span class="n hl">Zoho draft invoice</span></div>
-        <ul>
-          <li>Approved registrations become Zoho Contacts, each with their own price book</li>
-          <li>Messaging with S3 attachments, Web Push, and an installable PWA</li>
-          <li>Catalog and stock sync under a shared daily Zoho API budget</li>
-          <li>About 400 Vitest and Playwright tests; deployed with Docker on Railway</li>
-        </ul>
-        <div class="chips"><span class="chip">Next.js 15</span><span class="chip">Drizzle</span><span class="chip">PostgreSQL</span><span class="chip">Auth.js</span><span class="chip">Railway</span></div>
-      </article>
-
-      <article class="card reveal">
-        <span class="spot"></span>
-        <div class="card-top"><span class="kicker">CLIENT · FINANCE OPS</span><span class="badge">Private</span></div>
-        <h3>TMZohoBooksInteg</h3>
-        <div class="sub">Finance &amp; operations system · Torrecamps Marketing</div>
-        <div class="flow"><span class="n">Zoho Books API</span><span class="ar">⇄</span><span class="n">FastAPI ops</span><span class="ar">→</span><span class="n hl">BIR · A/R · Daily Sales</span></div>
-        <ul>
-          <li>Invoices, bills and stock; Daily Sales and A/R aging reports</li>
-          <li>PH BIR VAT/EWT reporting; payroll posted as Zoho expenses</li>
-          <li>Calibrated print layouts for invoices, receipts and cheques; PDF and Excel export</li>
-          <li>Runs on Docker/Railway and as a Windows desktop launcher</li>
-        </ul>
-        <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">WeasyPrint</span><span class="chip">openpyxl</span><span class="chip">Docker</span></div>
-      </article>
-      <article class="card wide reveal">
+      <article class="card wide reveal" id="p-essento">
         <span class="spot"></span>
         <div class="card-top"><span class="kicker">STANDALONE · RETAIL E-COMMERCE</span><span class="badge pub">● Live</span></div>
         <h3><a href="https://essentoph.com" data-goatcounter-click="essento-site">Essento</a></h3>
         <div class="sub">Online shop for everyday supplies</div>
-        <div class="wide-body">
+        <div class="wide-body media">
           <div>
             <p>A retail storefront for Metro Manila shoppers. It is spec-driven: an approved PRD, architecture and UX spec, split into stories that each have to pass a single <span class="mono">npm run verify</span> gate. It is built with DCTerminalv2's plan → build → review pipeline.</p>
             <div class="flow"><span class="n">Zoho CSV</span><span class="ar">→</span><span class="n">Catalog</span><span class="ar">→</span><span class="n">Cart</span><span class="ar">→</span><span class="n">Staff confirm</span><span class="ar">→</span><span class="n hl">COD / InstaPay</span></div>
+            <ul>
+              <li>Catalog imported from a Zoho CSV export (1,000+ items) with row-level review, re-import and keyword category rules</li>
+              <li>Checkout with a private order page; payment by COD or InstaPay QR with proof upload and staff verification</li>
+              <li>Admin tools: bulk price changes, price history, margins, publish/unpublish and order status workflow</li>
+              <li>Versioned policy pages, an email outbox, and automatic anonymization of personal data after the retention period</li>
+            </ul>
           </div>
-          <ul>
-            <li>Catalog imported from a Zoho CSV export (1,000+ items) with row-level review, re-import and keyword category rules</li>
-            <li>Checkout with a private order page; payment by COD or InstaPay QR with proof upload and staff verification</li>
-            <li>Admin tools: bulk price changes, price history, margins, publish/unpublish and order status workflow</li>
-            <li>Versioned policy pages, an email outbox, and automatic anonymization of personal data after the retention period</li>
-          </ul>
+          <figure>
+            <div class="shot"><div class="term-bar"><i></i><i></i><i></i><span>essentoph.com</span></div>
+              <img src="assets/shots/essento.jpg" alt="Essento storefront: search bar, category filters, headline 'Everyday essentials, delivered to your door' and category cards for tissues, paper towels and alcohols" width="1400" height="845" loading="lazy">
+            </div>
+            <figcaption>Storefront home · screenshot</figcaption>
+          </figure>
         </div>
         <div class="chips"><span class="chip">Next.js 15</span><span class="chip">TypeScript</span><span class="chip">Drizzle</span><span class="chip">PostgreSQL</span><span class="chip">Playwright</span><span class="chip">Railway</span></div>
         <a class="link-arrow" href="https://essentoph.com" data-goatcounter-click="essento-site">Visit essentoph.com →</a>
+      </article>
+      <article class="card wide reveal" id="p-tmzoho">
+        <span class="spot"></span>
+        <div class="card-top"><span class="kicker">CLIENT · FINANCE OPS</span><span class="badge">Private · walkthrough on request</span></div>
+        <h3>TMZohoBooksInteg</h3>
+        <div class="sub">Finance &amp; operations system · Torrecamps Marketing</div>
+        <div class="wide-body media">
+          <div>
+            <div class="flow"><span class="n">Zoho Books API</span><span class="ar">⇄</span><span class="n">FastAPI ops</span><span class="ar">→</span><span class="n hl">BIR · A/R · Daily Sales</span></div>
+            <ul>
+              <li>A home screen that shows what needs attention today: overdue receivables, stock outs, bills due</li>
+              <li>Invoices, bills and stock; Daily Sales and A/R aging reports</li>
+              <li>PH BIR VAT/EWT reporting; payroll posted as Zoho expenses</li>
+              <li>Calibrated print layouts for invoices, receipts and cheques; PDF and Excel export</li>
+              <li>Runs on Docker/Railway and as a Windows desktop launcher</li>
+            </ul>
+          </div>
+          <figure>
+            <div class="shot"><div class="term-bar"><i></i><i></i><i></i><span>Home · finance dashboard</span></div>
+              <div class="fx" role="img" aria-label="Illustration of the finance dashboard with sample figures: sidebar navigation, yesterday's sales with a 14-day chart, three items needing attention, this month's totals and yesterday's Zoho activity">
+                <div class="side">
+                  <div class="brand"><i>TM</i>Zoho Books</div>
+                  <span class="on">Home</span>
+                  <div class="grp">Overview</div><span>Business pulse</span><span>Zoho activity</span>
+                  <div class="grp">Sales &amp; reporting</div><span>Invoices</span><span>Daily Sales</span><span>Receivables</span>
+                  <div class="grp">Payables</div><span>Bills</span><span>Expenses</span><span>Manual cheques</span>
+                  <div class="grp">Inventory</div><span>Stock</span>
+                </div>
+                <div class="main">
+                  <div class="hd"><small>Wednesday · sample data</small><b>Good morning</b><span>Three things need you today.</span></div>
+                  <div class="row">
+                    <div class="cd">
+                      <span class="lb">Yesterday's sales <span class="pill">↓ 3% vs last week</span></span>
+                      <span class="big">₱412,500<small>.00</small></span>
+                      <svg viewBox="0 0 280 70" aria-hidden="true">
+                        <polygon fill="rgba(108,199,181,.16)" points="4,14 24,34 44,36 64,62 84,62 104,22 124,32 144,10 164,40 184,40 204,62 224,12 244,18 244,70 4,70"/>
+                        <polyline fill="none" stroke="#6cc7b5" stroke-width="2" points="4,14 24,34 44,36 64,62 84,62 104,22 124,32 144,10 164,40 184,40 204,62 224,12 244,18"/>
+                        <circle cx="244" cy="18" r="4" fill="#6cc7b5"/>
+                      </svg>
+                    </div>
+                    <div class="cd">
+                      <span class="lb">Needs you <span class="pill r">3 open</span></span>
+                      <div class="nd"><i></i><span><b>₱180,000</b> over 90 days<small>Receivables to collect first</small></span></div>
+                      <div class="nd"><i class="w"></i><span><b>80</b> items out of stock<small>20 more running low</small></span></div>
+                      <div class="nd"><i class="w"></i><span><b>25</b> run out in 7 days<small>At the current sales rate</small></span></div>
+                    </div>
+                  </div>
+                  <div class="tiles">
+                    <div class="cd"><span class="lb">Sales</span><span class="big">₱2.9M</span><span class="up">↑ vs last year</span></div>
+                    <div class="cd"><span class="lb">Collected</span><span class="big">₱2.6M</span><span class="dn">↓ vs last month</span></div>
+                    <div class="cd"><span class="lb">Expenses</span><span class="big">₱0.4M</span><span class="up">↓ vs last month</span></div>
+                    <div class="cd"><span class="lb">Owed to us</span><span class="big">₱2.8M</span><span class="up">est.</span></div>
+                  </div>
+                  <div class="cd act">
+                    <span class="lb">What moved in Zoho yesterday</span>
+                    <div><span>9:30 PM</span><span>30 invoices created</span><span>₱400,000</span></div>
+                    <div><span>9:20 PM</span><span>30 payments received</span><span>₱450,000</span></div>
+                    <div><span>4:30 PM</span><span>5 bills entered</span><span>₱350,000</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption>Home screen, redrawn with sample figures</figcaption>
+          </figure>
+        </div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">WeasyPrint</span><span class="chip">openpyxl</span><span class="chip">Docker</span></div>
+      </article>
+      <article class="card wide reveal" id="p-tmecomm">
+        <span class="spot"></span>
+        <div class="card-top"><span class="kicker">CLIENT · B2B COMMERCE</span><span class="badge">Private · walkthrough on request</span></div>
+        <h3>TMEcommWeb</h3>
+        <div class="sub">Customer ordering portal · Torrecamps Marketing</div>
+        <div class="wide-body">
+          <div class="flow"><span class="n">Customer</span><span class="ar">→</span><span class="n">Order</span><span class="ar">→</span><span class="n">Admin review</span><span class="ar">→</span><span class="n hl">Zoho draft invoice</span></div>
+          <ul>
+            <li>Approved registrations become Zoho Contacts, each with their own price book</li>
+            <li>Messaging with S3 attachments, Web Push, and an installable PWA</li>
+            <li>Catalog and stock sync under a shared daily Zoho API budget</li>
+            <li>About 400 Vitest and Playwright tests; deployed with Docker on Railway</li>
+          </ul>
+        </div>
+        <div class="chips"><span class="chip">Next.js 15</span><span class="chip">Drizzle</span><span class="chip">PostgreSQL</span><span class="chip">Auth.js</span><span class="chip">Railway</span></div>
       </article>
     </div>
   </section>
@@ -355,7 +545,19 @@ html:not(.js) .term-body .l{opacity:1}
   <section id="experience">
     <div class="sec-head reveal">
       <div><div class="kicker">// experience</div><h2>Where I've worked</h2></div>
-      <p>From production firefighting in retail to owning a product end to end.</p>
+      <p>From production firefighting in retail to owning a product end to end. From May to Oct 2026 I ran client work alongside a full-time role.</p>
+    </div>
+    <div class="lanes reveal">
+      <div class="lane-grid">
+        <span></span>
+        <div class="axis"><span>Sept 2024</span><span>2025</span><span>2026</span><span>Nov 2026</span></div>
+        <span class="nm">Koneksi Inc.<small>Senior Fullstack Developer</small></span>
+        <div class="track"><div class="lbar c" style="left:56%;width:41%">Oct 2025 – Oct 2026</div></div>
+        <span class="nm">Torrecamps<small>Software Consultant</small></span>
+        <div class="track"><div class="lbar v open" style="left:76%;width:24%">May 2026 – now</div></div>
+        <span class="nm">Philtech Inc.<small>Software Engineer I</small></span>
+        <div class="track"><div class="lbar p" style="left:0;width:56%">Sept 2024 – Oct 2025</div></div>
+      </div>
     </div>
     <div class="timeline">
       <div class="job reveal">
@@ -398,14 +600,14 @@ html:not(.js) .term-body .l{opacity:1}
       <p>BS IT, Mobile &amp; Internet Technologies · Asia Pacific College, 2024 · Claude Certified Developer – Foundations</p>
     </div>
     <div class="skills">
-      <div class="skill reveal"><h4><i>🎨</i>Frontend</h4><div class="chips"><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Tailwind</span><span class="chip">xterm.js</span></div></div>
-      <div class="skill reveal"><h4><i>⚙️</i>Backend</h4><div class="chips"><span class="chip">Go</span><span class="chip">Python / FastAPI</span><span class="chip">Java / Spring Boot</span><span class="chip">Rust</span><span class="chip">OpenAPI</span><span class="chip">Asynq</span></div></div>
-      <div class="skill reveal"><h4><i>🗄️</i>Data</h4><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">SQLite</span><span class="chip">SQL Server</span><span class="chip">IBM DB2</span><span class="chip">MySQL</span><span class="chip">S3</span><span class="chip">IPFS</span></div></div>
-      <div class="skill reveal"><h4><i>🖥️</i>Desktop</h4><div class="chips"><span class="chip">Tauri 2</span><span class="chip">Electron</span><span class="chip">PyInstaller</span></div></div>
-      <div class="skill reveal"><h4><i>🔌</i>Integrations</h4><div class="chips"><span class="chip">Zoho Books</span><span class="chip">Zoho Inventory</span><span class="chip">Auth.js</span><span class="chip">OAuth</span><span class="chip">Web Push</span><span class="chip">ClickUp</span></div></div>
-      <div class="skill reveal"><h4><i>🚀</i>Delivery</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Railway</span><span class="chip">GitHub Actions</span><span class="chip">Playwright</span><span class="chip">Vitest</span><span class="chip">pytest</span></div></div>
+      <div class="skill reveal"><h4><i>&lt;/&gt;</i>Frontend</h4><div class="chips"><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Tailwind</span><span class="chip">xterm.js</span></div><div class="used"><b>Used in</b>Essento, TMEcommWeb, DCTerminalv2, DATARK web</div></div>
+      <div class="skill reveal"><h4><i>{ }</i>Backend</h4><div class="chips"><span class="chip">Go</span><span class="chip">Python / FastAPI</span><span class="chip">Java / Spring Boot</span><span class="chip">Rust</span><span class="chip">OpenAPI</span><span class="chip">Asynq</span></div><div class="used"><b>Used in</b>DATARK (Go, Asynq), TMZohoBooksInteg (FastAPI), DCTerminalv2 (Rust), Philtech (Java 17)</div></div>
+      <div class="skill reveal"><h4><i>db</i>Data</h4><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">SQLite</span><span class="chip">SQL Server</span><span class="chip">IBM DB2</span><span class="chip">MySQL</span><span class="chip">S3</span><span class="chip">IPFS</span></div><div class="used"><b>Used in</b>PostgreSQL in Essento and TMEcommWeb; S3 in DATARK</div></div>
+      <div class="skill reveal"><h4><i>▭</i>Desktop</h4><div class="chips"><span class="chip">Tauri 2</span><span class="chip">Electron</span><span class="chip">PyInstaller</span></div><div class="used"><b>Used in</b>DCTerminalv2, DATARK desktop, TMZohoBooksInteg launcher</div></div>
+      <div class="skill reveal"><h4><i>⇄</i>Integrations</h4><div class="chips"><span class="chip">Zoho Books</span><span class="chip">Zoho Inventory</span><span class="chip">Auth.js</span><span class="chip">OAuth</span><span class="chip">Web Push</span><span class="chip">ClickUp</span></div><div class="used"><b>Used in</b>TMZohoBooksInteg, TMEcommWeb, DCTerminalv2</div></div>
+      <div class="skill reveal"><h4><i>▶</i>Delivery</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Railway</span><span class="chip">GitHub Actions</span><span class="chip">Playwright</span><span class="chip">Vitest</span><span class="chip">pytest</span></div><div class="used"><b>Used in</b>300+ E2E at Koneksi; ~400 tests on TMEcommWeb; Railway for Torrecamps apps</div></div>
     </div>
-    <div class="skill reveal" style="margin-top:18px"><h4><i>🤖</i>AI-assisted engineering</h4><div class="chips"><span class="chip">Claude Code</span><span class="chip">Cursor</span><span class="chip">Spec-to-code loops</span><span class="chip">Agent handoffs</span><span class="chip">Review gates</span><span class="chip">AI-assisted test generation</span></div></div>
+    <div class="skill reveal" style="margin-top:18px"><h4><i>✦</i>AI-assisted engineering</h4><div class="chips"><span class="chip">Claude Code</span><span class="chip">Cursor</span><span class="chip">Spec-to-code loops</span><span class="chip">Agent handoffs</span><span class="chip">Review gates</span><span class="chip">AI-assisted test generation</span></div><div class="used"><b>Used in</b>DCTerminalv2, Essento, Torrecamps delivery</div></div>
     <div class="skill cert reveal">
       <img src="assets/claude-certified-developer-foundations.png" alt="Claude Certified Developer – Foundations badge" width="96" height="96" loading="lazy">
       <div>
@@ -417,15 +619,21 @@ html:not(.js) .term-body .l{opacity:1}
     </div>
   </section>
 
-  <section>
+  <section id="contact">
     <div class="contact reveal">
       <div class="kicker">// get in touch</div>
       <h2>Let's build something <span class="grad-text">solid</span>.</h2>
       <p>Open to full-stack roles and freelance projects. The quickest way to reach me is email.</p>
-      <div class="cta">
-        <a class="btn primary" href="mailto:jtfrancisco21@gmail.com" data-goatcounter-click="email">jtfrancisco21@gmail.com</a>
-        <a class="btn" href="assets/Jan-Terence-Francisco-CV.pdf" download data-goatcounter-click="cv-download">Download CV (PDF)</a>
+      <div>
+        <span class="mailbox" id="addr">jtfrancisco21@gmail.com</span>
       </div>
+      <div class="cta">
+        <a class="btn primary" href="mailto:jtfrancisco21@gmail.com" data-goatcounter-click="email">Email me</a>
+        <button type="button" class="btn" id="copy" data-goatcounter-click="email-copy">Copy email</button>
+        <a class="btn" href="assets/Jan-Terence-Francisco-CV.pdf" download data-goatcounter-click="cv-download">Download CV (PDF)</a>
+        <a class="btn" href="https://github.com/jtfrancisco0121" data-goatcounter-click="github-profile">GitHub</a>
+      </div>
+      <span class="copied" id="copied" aria-live="polite"></span>
     </div>
   </section>
 
@@ -439,11 +647,20 @@ html:not(.js) .term-body .l{opacity:1}
 (() => {
   const root = document.documentElement, KEY = "theme";
   try { const t = localStorage.getItem(KEY); if (t) root.dataset.theme = t; } catch (e) {}
+  const isLight = () => root.dataset.theme ? root.dataset.theme === "light" : matchMedia("(prefers-color-scheme: light)").matches;
+  const lbl = document.getElementById("themeLbl"), paint = () => { lbl.textContent = isLight() ? "light" : "dark"; };
+  paint();
+  matchMedia("(prefers-color-scheme: light)").addEventListener("change", paint);
   document.getElementById("theme").onclick = () => {
-    const light = root.dataset.theme ? root.dataset.theme === "light" : matchMedia("(prefers-color-scheme: light)").matches;
-    root.dataset.theme = light ? "dark" : "light";
+    root.dataset.theme = isLight() ? "dark" : "light";
     try { localStorage.setItem(KEY, root.dataset.theme); } catch (e) {}
+    paint();
   };
+  const addr = document.getElementById("addr"), msg = document.getElementById("copied");
+  document.getElementById("copy").addEventListener("click", () => {
+    const select = () => { const r = document.createRange(); r.selectNodeContents(addr); const s = getSelection(); s.removeAllRanges(); s.addRange(r); msg.textContent = "Selected. Press ⌘C to copy."; };
+    try { navigator.clipboard.writeText(addr.textContent).then(() => { msg.textContent = "Copied to clipboard"; }, select); } catch (e) { select(); }
+  });
 
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const els = document.querySelectorAll(".reveal");
