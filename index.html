@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050913'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='28' fill='%2338d3e8'%3EJT%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
 <style>
 :root{
   --frame:#050913; --card:#0a1120; --card-2:#0e1729; --line:#18233a; --line-2:#243149;
@@ -26,25 +26,47 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:#9cc0d8;color:var(--text);font:400 15px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;background:#03060d;color:var(--text);font:400 15px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:#7fe3f2}a:hover{color:#b6f1fa}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 img{display:block;max-width:100%}
 h1,h2,h3{margin:0;font-family:var(--head);color:var(--strong)}
 p{margin:0}
 
-/* scenery frame */
-.scene{position:relative;min-height:100vh;padding:44px 36px;overflow:hidden;background:linear-gradient(#7fa9cc 0px,#b9d3e6 520px,#9cc0d8 100%)}
-.scene > svg{position:absolute;left:0;width:100%;pointer-events:none}
-.scene > .mtn{top:120px;height:520px}
-.scene > .lake{bottom:0;height:420px}
+/* backdrop: deep navy, faint grid, soft glow behind the window */
+.scene{position:relative;min-height:100vh;padding:44px 36px;overflow:clip;background-color:#03060d;
+  background-image:
+    radial-gradient(900px 520px at 50% -80px,rgba(56,211,232,.16),transparent 70%),
+    radial-gradient(700px 600px at 100% 100%,rgba(56,120,232,.08),transparent 70%),
+    linear-gradient(rgba(148,170,210,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(148,170,210,.045) 1px,transparent 1px);
+  background-size:auto,auto,48px 48px,48px 48px;background-position:0 0,0 0,-1px -1px,-1px -1px}
+.scene::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(1200px 900px at 50% 30%,transparent 40%,#03060d 100%)}
+
+/* cursor glow: page layer + per-card spotlight and lit edge (mouse only) */
+.cursor-glow{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(560px circle at var(--px,-999px) var(--py,-999px),rgba(56,211,232,.14),transparent 65%)}
+.window{isolation:isolate}
+.window > .cursor-glow{z-index:-1;border-radius:inherit;background:radial-gradient(420px circle at var(--px,-999px) var(--py,-999px),rgba(56,211,232,.20),transparent 65%)}
+.scene.lit .cursor-glow{opacity:1}
+.card,.inner{position:relative;isolation:isolate}
+.card::before,.inner::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;opacity:0;transition:opacity .3s;
+  background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(56,211,232,.10),transparent 60%)}
+.card::after,.inner::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(240px circle at var(--mx,50%) var(--my,0%),rgba(56,211,232,.85),rgba(167,139,250,.35) 45%,transparent 70%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+@media (hover:hover){.card:hover::before,.card:hover::after,.inner:hover::before,.inner:hover::after{opacity:1}}
+@media (prefers-reduced-motion:reduce){.cursor-glow,.card::before,.card::after,.inner::before,.inner::after{transition:none}}
 
 .window{position:relative;max-width:1400px;margin:0 auto;background:var(--frame);border:1px solid #1b2640;border-radius:30px;padding:22px;
+  box-shadow:0 0 0 1px rgba(56,211,232,.06),0 40px 120px -30px rgba(56,211,232,.22),0 30px 80px -20px rgba(0,0,0,.8);
   display:grid;gap:18px;align-items:start;
   grid-template-columns:260px minmax(0,1fr) 400px;
-  grid-template-areas:"side top right" "side bottom right"}
-.side{grid-area:side;position:sticky;top:22px}
-.top{grid-area:top}.right{grid-area:right;grid-row:1 / span 2}.bottom{grid-area:bottom}
+  grid-template-areas:"side top right" "side work work" "side bottom bottom"}
+.side{grid-area:side;position:sticky;top:22px;max-height:calc(100vh - 44px);overflow-y:auto;scrollbar-width:thin}
+.top{grid-area:top;align-self:stretch}.right{grid-area:right;align-self:stretch}.showcase{grid-area:work}.bottom{grid-area:bottom}
+/* columns end level: the hero and the last right-hand panel take up any spare height */
+.top > .hero{flex:1 0 auto}.right > :last-child{flex:1 0 auto}
 .stack{display:flex;flex-direction:column;gap:18px;min-width:0}
 
 .card{background:var(--card);border:1px solid var(--line);border-radius:22px}
@@ -117,17 +139,105 @@ p{margin:0}
 /* right column */
 .panel{padding:18px;display:flex;flex-direction:column;gap:10px}
 .panel .sec-head{padding:4px 4px 8px}
-.work{display:flex;flex-direction:column;gap:12px;padding:14px;text-decoration:none;color:inherit;transition:border-color .15s,background .15s}
-.work:hover{border-color:var(--accent);color:inherit}
-.work .w-top{display:flex;align-items:center;gap:12px}
-.work .num{font:500 11px var(--mono);color:#7d8aa3}
-.work .w-name{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
-.work h3{font-size:17px;font-weight:700}
-.work .kind{font:500 11px var(--mono);color:var(--faint)}
-.work img{width:104px;height:64px;object-fit:cover;object-position:top left;border-radius:8px;border:1px solid var(--line-2);flex:none}
-.work .arrow{width:36px;height:36px}
-.work p{font-size:13px;color:var(--muted)}
-.work .stack-line{font:400 11px var(--mono);color:var(--body)}
+
+/* selected work: wide showcase with proof */
+.showcase{padding:28px;display:flex;flex-direction:column;gap:18px}
+.showcase > .sec-head{margin-bottom:4px}
+.proj{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:26px 30px;padding:26px;align-items:start}
+.proj > figure{align-self:center}
+.proj.feature{grid-template-columns:minmax(0,1fr)}
+.proj .copy{display:flex;flex-direction:column;gap:14px;min-width:0}
+.proj .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:500 11px var(--mono);color:#7d8aa3}
+.badge{font:500 11px var(--mono);padding:3px 9px;border-radius:999px;border:1px solid var(--line-2);color:#aeb9cd}
+.badge.pub{color:var(--green);border-color:rgba(74,222,128,.4)}
+.proj h3{font-size:28px;font-weight:800;letter-spacing:-.025em}
+.proj h3 a{color:inherit;text-decoration:none}.proj h3 a:hover{color:var(--accent)}
+.proj .sub{font-size:14px;color:var(--faint);margin-top:-8px}
+.proj p{color:var(--body);font-size:14.5px}
+.proj ul{margin:0;padding:0 0 0 18px;display:grid;gap:7px;font-size:14px;color:var(--body)}
+.proj.feature ul{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px}
+.proj li::marker{color:var(--accent)}
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:12px;border-radius:12px;background:#070c18;border:1px dashed var(--line-2);font:500 12px var(--mono)}
+.flow .n{padding:6px 10px;border-radius:7px;background:var(--card-2);border:1px solid var(--line-2);color:var(--text)}
+.flow .n.hl{border-color:var(--accent);color:var(--accent)}
+.flow .ar{color:#7d8aa3}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font:500 11px var(--mono);color:var(--body);background:var(--card-2);border:1px solid var(--line-2);border-radius:999px;padding:4px 10px}
+.go{display:inline-flex;align-items:center;gap:8px;font:600 14px Inter,sans-serif;color:var(--accent);text-decoration:none;align-self:flex-start;min-height:44px}
+.go:hover{color:#b6f1fa}
+.figs{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;padding-top:22px;border-top:1px dashed var(--line-2)}
+figure{margin:0;display:grid;gap:8px;min-width:0}
+figcaption{font:12px var(--mono);color:#7d8aa3}
+.shot{border-radius:12px;border:1px solid var(--line-2);overflow:hidden;background:#0a0e15;box-shadow:0 20px 50px -24px rgba(0,0,0,.8);container-type:inline-size}
+.shot img{width:100%;height:auto}
+.shot.tall img{aspect-ratio:880/760;object-fit:cover;object-position:top}
+.bar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06)}
+.bar i{width:10px;height:10px;border-radius:50%;background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar span{margin-left:8px;font:12px var(--mono);color:#7d8aa0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Eagle-Eye run panel, redrawn */
+.rp{--r-bg:#262833;--r-panel:#2e3040;--r-ink:#e7e8ef;--r-mu:#a3a6b8;--r-line:#3b3e50;--r-ok:#5bd08a;--r-run:#b48cff;--r-ex:#e8b04a;
+  background:var(--r-bg);color:var(--r-ink);font:12px/1.5 var(--mono);padding:14px;display:grid;gap:12px}
+.rp .t{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.rp .t b{font-weight:600}.rp .ex{color:var(--r-ex)}
+.rp .stg{display:flex;flex-wrap:wrap;gap:4px 8px;color:var(--r-mu)}
+.rp .stg .ok{color:var(--r-ok)}.rp .stg .run{color:var(--r-run);font-weight:600}
+.rp .prs{display:grid;gap:7px;background:var(--r-panel);border-radius:8px;padding:10px}
+.rp .pr{display:grid;grid-template-columns:40px minmax(0,1fr) 70px;gap:8px;align-items:center}
+.rp .trk{height:6px;border-radius:3px;background:var(--r-line);overflow:hidden}
+.rp .trk span{display:block;height:100%;background:var(--r-ok)}.rp .trk span.r{background:var(--r-run)}
+.rp .pr em{font-style:normal;color:var(--r-mu);text-align:right}
+.rp ul{list-style:none;margin:0;padding:0;display:grid;gap:3px;color:var(--r-mu);font-size:12px}
+.rp li b{color:var(--r-ink);font-weight:500}.rp li .run{color:var(--r-run)}
+.rp .gate{border:1px dashed var(--r-line);border-radius:8px;padding:8px 10px;color:var(--r-mu)}
+.rp .gate b{color:var(--r-ink)}
+
+/* TMZohoBooksInteg home screen, redrawn */
+.fx{--f-bg:#0f1f1d;--f-side:#0c1918;--f-card:#15292a;--f-line:#22393a;--f-ink:#e9efe9;--f-mu:#93a8a3;--f-teal:#6cc7b5;--f-gold:#e7b04c;--f-red:#e5807a;
+  background:var(--f-bg);color:var(--f-ink);font:12px/1.45 Inter,system-ui,sans-serif;display:grid;grid-template-columns:150px minmax(0,1fr)}
+.fx-side{background:var(--f-side);border-right:1px solid var(--f-line);padding:14px 10px;display:grid;gap:3px;align-content:start;font-size:11.5px;color:var(--f-mu)}
+.fx-side .brand{display:flex;gap:8px;align-items:center;color:var(--f-ink);font-weight:600;margin-bottom:10px}
+.fx-side .brand i{width:22px;height:22px;border-radius:6px;background:var(--f-card);border:1px solid var(--f-line);display:grid;place-items:center;font:600 9px var(--mono);font-style:normal;color:var(--f-gold)}
+.fx-side .grp{font:600 9px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin:8px 0 2px;opacity:.8}
+.fx-side span{padding:4px 8px;border-radius:6px}
+.fx-side span.on{background:var(--f-card);color:var(--f-ink);box-shadow:inset 2px 0 0 var(--f-gold)}
+.fx-main{padding:16px;display:grid;gap:12px;min-width:0}
+.fx .hd small{font:600 9.5px var(--mono);letter-spacing:.12em;color:var(--f-mu);text-transform:uppercase}
+.fx .hd b{display:block;font:500 1.6rem/1.1 "Newsreader",Georgia,serif;letter-spacing:-.01em;margin:2px 0}
+.fx .hd span{color:var(--f-mu)}
+.fx .row{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:10px}
+.fx .cd{background:var(--f-card);border:1px solid var(--f-line);border-radius:10px;padding:12px;display:grid;gap:6px;align-content:start;min-width:0}
+.fx .lb{display:flex;justify-content:space-between;gap:6px;font:600 9.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--f-mu)}
+.fx-pill{font:500 9.5px var(--mono);letter-spacing:0;text-transform:none;padding:2px 7px;border-radius:999px;border:1px solid rgba(231,176,76,.45);color:var(--f-gold)}
+.fx-pill.r{border-color:rgba(229,128,122,.45);color:var(--f-red)}
+.fx .big{font:500 1.9rem/1 "Newsreader",Georgia,serif;font-variant-numeric:tabular-nums}
+.fx .big small{font-size:.55em;color:var(--f-mu)}
+.fx svg{width:100%;height:auto;display:block}
+.fx .nd{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:center;padding:7px 0;border-top:1px solid var(--f-line)}
+.fx .nd i{width:22px;height:22px;border-radius:6px;display:block;background:rgba(229,128,122,.18);border:1px solid rgba(229,128,122,.4)}
+.fx .nd i.w{background:rgba(231,176,76,.16);border-color:rgba(231,176,76,.4)}
+.fx .nd b{font:500 1rem "Newsreader",Georgia,serif}
+.fx .nd small{display:block;color:var(--f-mu)}
+.fx .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.fx .tiles .big{font-size:1.15rem}
+.fx .up{color:var(--f-teal);font:10.5px var(--mono)}.fx .dn{color:var(--f-red);font:10.5px var(--mono)}
+.fx .act div{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:8px;padding:6px 0;border-top:1px solid var(--f-line);align-items:baseline}
+.fx .act div span:first-child{color:var(--f-mu);font:10.5px var(--mono)}
+.fx .act div span:last-child{font:500 .95rem "Newsreader",Georgia,serif}
+@container (max-width:620px){
+  .fx{grid-template-columns:1fr}.fx-side{display:none}
+  .fx .row{grid-template-columns:1fr}.fx .tiles{grid-template-columns:1fr 1fr}
+}
+
+/* TMEcommWeb order pipeline, drawn */
+.pipe{padding:18px;display:grid;gap:10px;background:#0b1222}
+.pipe .step{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border-radius:10px;background:#111a2e;border:1px solid var(--line-2)}
+.pipe .step i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:600 12px var(--mono);font-style:normal;color:var(--on-accent);background:var(--accent)}
+.pipe .step b{font:600 14px Inter,sans-serif;color:var(--strong)}
+.pipe .step small{display:block;font-size:12px;color:var(--faint)}
+.pipe .step em{font:500 11px var(--mono);font-style:normal;color:#7d8aa3}
+.pipe .step.hl{border-color:var(--accent)}
+.pipe .down{justify-self:start;margin-left:28px;color:#7d8aa3;font:12px var(--mono)}
 
 .tools{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .tool{padding:16px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
@@ -168,9 +278,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
 
 /* tablet: right column drops under the top of main */
 @media (max-width:1279px){
-  .window{grid-template-columns:250px minmax(0,1fr);grid-template-areas:"side top" "side right" "side bottom"}
-  .right{grid-row:auto}
-  #work .list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .window{grid-template-columns:250px minmax(0,1fr);grid-template-areas:"side top" "side work" "side right" "side bottom"}
+  .proj{grid-template-columns:minmax(0,1fr)}
   .tools{grid-template-columns:repeat(4,minmax(0,1fr))}
   .plans{flex-direction:row}.plans .plan{flex:1}
 }
@@ -182,10 +291,11 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
 /* phone: one column */
 @media (max-width:860px){
   .scene{padding:16px 10px}
-  .window{grid-template-columns:minmax(0,1fr);grid-template-areas:"side" "top" "right" "bottom";padding:12px;border-radius:22px}
+  .window{grid-template-columns:minmax(0,1fr);grid-template-areas:"side" "top" "work" "right" "bottom";padding:12px;border-radius:22px}
   .side{position:static}
   .menu{display:none}
-  #work .list,.langs,.creds{grid-template-columns:minmax(0,1fr)}
+  .langs,.creds,.figs,.proj.feature ul{grid-template-columns:minmax(0,1fr)}
+  .showcase{padding:18px}.proj{padding:18px}.proj h3{font-size:24px}
   .tools{grid-template-columns:repeat(2,minmax(0,1fr))}
   .plans{flex-direction:column}
   .bio{flex-direction:column}.bio p{font-size:22px}
@@ -198,19 +308,9 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
 </head>
 <body>
 <div class="scene">
-  <svg class="mtn" aria-hidden="true" viewBox="0 0 1440 520" preserveAspectRatio="none">
-    <polygon fill="#8aa7c2" points="0,300 120,190 230,260 360,120 470,230 600,150 720,250 860,110 990,220 1110,140 1250,240 1360,170 1440,220 1440,520 0,520"/>
-    <polygon fill="#5f7f9d" points="0,360 140,260 260,330 400,230 540,320 690,240 820,330 960,250 1100,340 1240,260 1440,330 1440,520 0,520"/>
-    <polygon fill="#3f5f6e" points="0,430 180,370 340,420 520,360 700,425 880,365 1060,430 1240,370 1440,420 1440,520 0,520"/>
-  </svg>
-  <svg class="lake" aria-hidden="true" viewBox="0 0 1440 420" preserveAspectRatio="none">
-    <rect width="1440" height="420" fill="#6f9fbd"/>
-    <polygon fill="#4b6f60" points="0,140 200,110 420,150 640,105 860,145 1080,100 1300,140 1440,120 1440,420 0,420"/>
-    <polygon fill="#a9923a" points="0,250 160,220 360,260 560,225 780,262 1000,228 1220,258 1440,230 1440,420 0,420"/>
-    <polygon fill="#d2b44a" points="0,320 220,300 480,330 760,298 1040,332 1300,305 1440,320 1440,420 0,420"/>
-  </svg>
-
+  <div class="cursor-glow" aria-hidden="true"></div>
 <div class="window">
+<div class="cursor-glow" aria-hidden="true"></div>
 
 <aside class="card side" aria-label="Profile">
   <div class="me">
@@ -275,38 +375,199 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
   </div>
 </main>
 
-<div class="right stack">
-  <section class="card panel" id="work">
-    <div class="sec-head"><span class="tag">Selected work</span><h2>Building now</h2></div>
-    <div class="list stack" style="gap:10px">
-      <a class="inner work" href="https://github.com/jtfrancisco0121/DCTerminalv2" data-goatcounter-click="dcterminalv2-repo">
-        <span class="w-top"><span class="num">[001]</span><span class="w-name"><h3>DCTerminalv2</h3><span class="kind">Featured · public repo</span></span><img src="assets/shots/dct-newrun.jpg" alt="DCTerminalv2 New run screen" loading="lazy"><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
-        <p>Desktop workspace for Claude Code agents: plans a change, builds it in parallel git worktrees, reviews it, and opens PRs only on approval.</p>
-        <span class="stack-line">Rust · Tauri 2 · React · xterm.js</span>
-      </a>
-      <a class="inner work" href="https://essentoph.com" data-goatcounter-click="essento-site">
-        <span class="w-top"><span class="num">[002]</span><span class="w-name"><h3>Essento</h3><span class="kind">Live · essentoph.com</span></span><img src="assets/shots/essento.jpg" alt="Essento storefront home" loading="lazy"><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
-        <p>Online shop for everyday supplies: 1,000+ items imported from Zoho, COD and InstaPay checkout, and admin tools for prices and orders.</p>
-        <span class="stack-line">Next.js 15 · Drizzle · PostgreSQL · Railway</span>
-      </a>
-      <a class="inner work" href="https://github.com/jtfrancisco0121/ocr-receipts" data-goatcounter-click="resibo-repo">
-        <span class="w-top"><span class="num">[003]</span><span class="w-name"><h3>Resibo</h3><span class="kind">Standalone · public repo</span></span><img src="assets/shots/resibo.jpg" alt="Resibo results for an 8-document sample batch" loading="lazy"><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
-        <p>Invoice and receipt PDFs to a checked spreadsheet. Claude reads; Python checks totals, VAT and duplicates and flags rows to review.</p>
-        <span class="stack-line">Python · FastAPI · Claude API · n8n</span>
-      </a>
-      <a class="inner work" href="#contact">
-        <span class="w-top"><span class="num">[004]</span><span class="w-name"><h3>TMZohoBooksInteg</h3><span class="kind">Client · private</span></span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
-        <p>Finance and operations system on Zoho Books for Torrecamps Marketing: A/R aging, Daily Sales, BIR VAT/EWT. Walkthrough on request.</p>
-        <span class="stack-line">Python · FastAPI · WeasyPrint · openpyxl</span>
-      </a>
-      <a class="inner work" href="#contact">
-        <span class="w-top"><span class="num">[005]</span><span class="w-name"><h3>TMEcommWeb</h3><span class="kind">Client · private</span></span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
-        <p>B2B ordering portal that turns approved orders into Zoho Books draft invoices, with about 400 tests. Walkthrough on request.</p>
-        <span class="stack-line">Next.js 15 · Drizzle · PostgreSQL · Auth.js</span>
-      </a>
-    </div>
-  </section>
+<section class="card showcase" id="work">
+  <div class="sec-head big"><span class="tag">Selected work</span><h2>Things I'm building now</h2></div>
 
+  <article class="inner proj feature">
+    <div class="copy">
+      <div class="meta"><span>[001]</span><span>FEATURED · DESKTOP APP</span><span class="badge pub">● Public repo</span></div>
+      <h3><a href="https://github.com/jtfrancisco0121/DCTerminalv2" data-goatcounter-click="dcterminalv2-repo">DCTerminalv2</a></h3>
+      <div class="sub">A desktop workspace for Claude Code agents · macOS &amp; Windows</div>
+      <p>A terminal app built for AI-assisted development. Its <strong>Eagle-Eye</strong> pipeline plans a change, waits for approval, builds it in parallel git worktrees, reviews it, and opens PRs only when I say so.</p>
+      <ul>
+        <li>Tabs, split panes, a command palette, and per-tab “needs you” status with desktop and phone push</li>
+        <li>Run panel with stages, per-PR progress, CI checks, review gates, cost and timeline</li>
+        <li>ClickUp integration and a bundled Claude Code plugin with planner, developer and reviewer roles</li>
+        <li>Worktree guard, nothing pushed without approval, secrets kept in the OS keychain</li>
+      </ul>
+      <div class="chips"><span>Rust</span><span>Tauri 2</span><span>React</span><span>xterm.js</span><span>TypeScript</span></div>
+    </div>
+    <div class="figs">
+      <figure>
+        <div class="shot"><div class="bar"><i></i><i></i><i></i><span>Eagle-Eye · run panel</span></div>
+          <div class="rp" role="img" aria-label="Illustration of an Eagle-Eye run: planning and plan approval done, building 2 of 3 PRs, ship approval waiting">
+            <div class="t"><b>Eagle-Eye · example-repo</b><span class="ex">sample data</span></div>
+            <div class="stg"><span class="ok">✓ Planning</span><span>—</span><span class="ok">✓ Plan approval (you)</span><span>—</span><span class="run">● Building 2/3 PRs</span><span>—</span><span>○ Ship approval (you)</span><span>—</span><span>○ Done</span></div>
+            <div class="prs">
+              <div class="pr"><span>pr-1</span><div class="trk"><span style="width:100%"></span></div><em>reviewed</em></div>
+              <div class="pr"><span>pr-2</span><div class="trk"><span style="width:100%"></span></div><em>reviewing</em></div>
+              <div class="pr"><span>pr-3</span><div class="trk"><span class="r" style="width:64%"></span></div><em>building</em></div>
+            </div>
+            <ul>
+              <li><b>implementer</b> · PR3 implement — <span class="run">running</span></li>
+              <li><b>pr-reviewer</b> · PR2 review round 1 — <span class="run">running</span></li>
+              <li><b>pr-reviewer</b> · PR1 review round 1 — completed</li>
+              <li><b>risk-reviewer</b> · Risk review — completed</li>
+              <li><b>plan-reviewer</b> · Plan review — completed</li>
+              <li><b>planner</b> · Write plan.md — completed</li>
+            </ul>
+            <div class="gate">Next gate: <b>Ship approval</b>. No PR opens until you say so.</div>
+          </div>
+        </div>
+        <figcaption>The real run panel, redrawn with sample data</figcaption>
+      </figure>
+      <figure>
+        <div class="shot tall"><div class="bar"><i></i><i></i><i></i><span>New run</span></div>
+          <img src="assets/shots/dct-newrun.jpg" alt="DCTerminalv2 New run screen: folder picker, task description, ClickUp tickets, review on GitHub option, BMAD planning, Start Eagle-Eye button and role buttons" width="880" height="1180" loading="lazy">
+        </div>
+        <figcaption>Starting a run · screenshot</figcaption>
+      </figure>
+    </div>
+    <a class="go" href="https://github.com/jtfrancisco0121/DCTerminalv2" data-goatcounter-click="dcterminalv2-repo">View on GitHub →</a>
+  </article>
+
+  <article class="inner proj">
+    <div class="copy">
+      <div class="meta"><span>[002]</span><span>STANDALONE · RETAIL E-COMMERCE</span><span class="badge pub">● Live</span></div>
+      <h3><a href="https://essentoph.com" data-goatcounter-click="essento-site">Essento</a></h3>
+      <div class="sub">Online shop for everyday supplies</div>
+      <p>A retail storefront for Metro Manila shoppers, built spec-first: an approved PRD, architecture and UX spec, split into stories that each have to pass one <span class="mono">npm run verify</span> gate.</p>
+      <div class="flow"><span class="n">Zoho CSV</span><span class="ar">→</span><span class="n">Catalog</span><span class="ar">→</span><span class="n">Cart</span><span class="ar">→</span><span class="n">Staff confirm</span><span class="ar">→</span><span class="n hl">COD / InstaPay</span></div>
+      <ul>
+        <li>Catalog imported from a Zoho CSV export (1,000+ items) with row-level review and re-import</li>
+        <li>Checkout with a private order page; COD or InstaPay QR with proof upload and staff verification</li>
+        <li>Admin tools: bulk price changes, price history, margins and order status workflow</li>
+        <li>Versioned policy pages, an email outbox, and automatic anonymization after the retention period</li>
+      </ul>
+      <div class="chips"><span>Next.js 15</span><span>TypeScript</span><span>Drizzle</span><span>PostgreSQL</span><span>Playwright</span><span>Railway</span></div>
+      <a class="go" href="https://essentoph.com" data-goatcounter-click="essento-site">Visit essentoph.com →</a>
+    </div>
+    <figure>
+      <div class="shot"><div class="bar"><i></i><i></i><i></i><span>essentoph.com</span></div>
+        <img src="assets/shots/essento.jpg" alt="Essento storefront: search bar, category filters, headline 'Everyday essentials, delivered to your door' and category cards for tissues, paper towels and alcohols" width="1400" height="845" loading="lazy">
+      </div>
+      <figcaption>Storefront home · screenshot</figcaption>
+    </figure>
+  </article>
+
+  <article class="inner proj">
+    <div class="copy">
+      <div class="meta"><span>[003]</span><span>STANDALONE · AI DOCUMENT EXTRACTION</span><span class="badge pub">● Public repo</span></div>
+      <h3><a href="https://github.com/jtfrancisco0121/ocr-receipts" data-goatcounter-click="resibo-repo">Resibo</a></h3>
+      <div class="sub">Invoice &amp; receipt PDFs to a checked spreadsheet</div>
+      <p>Bookkeepers still key Philippine invoices in by hand. Resibo reads a multi-page PDF with Claude, then Python checks every number and flags the rows a person should look at. <strong>The model reads; Python decides.</strong></p>
+      <div class="flow"><span class="n">PDF</span><span class="ar">→</span><span class="n">Claude, structured output</span><span class="ar">→</span><span class="n">Validation</span><span class="ar">→</span><span class="n hl">Excel / CSV</span></div>
+      <ul>
+        <li>Finds every document in a PDF and returns one row each plus line items</li>
+        <li><span class="mono">Decimal</span> money rules for totals, 12% VAT, duplicates, TINs and dates mark rows OK, REVIEW or ERROR</li>
+        <li>100% of fields correct on an 8-document eval set, about $0.01 a page, with a daily budget cap</li>
+        <li>Web page, HTTP API, CLI and an n8n workflow from Google Drive to Google Sheets</li>
+      </ul>
+      <div class="chips"><span>Python</span><span>FastAPI</span><span>Claude API</span><span>Pydantic</span><span>openpyxl</span><span>n8n</span></div>
+      <a class="go" href="https://github.com/jtfrancisco0121/ocr-receipts" data-goatcounter-click="resibo-repo">View on GitHub →</a>
+    </div>
+    <figure>
+      <div class="shot"><div class="bar"><i></i><i></i><i></i><span>Resibo · sample batch</span></div>
+        <img src="assets/shots/resibo.jpg" alt="Resibo results for an 8-document sample: summary of total, status counts, cost and time, then a table where 6 rows are OK and 2 are ERROR, one for a total that does not add up and one for a duplicate invoice number" width="1100" height="790" loading="lazy">
+      </div>
+      <figcaption>Results for the sample batch · screenshot</figcaption>
+    </figure>
+  </article>
+
+  <article class="inner proj">
+    <div class="copy">
+      <div class="meta"><span>[004]</span><span>CLIENT · FINANCE OPS</span><span class="badge">Private · walkthrough on request</span></div>
+      <h3>TMZohoBooksInteg</h3>
+      <div class="sub">Finance &amp; operations system · Torrecamps Marketing</div>
+      <div class="flow"><span class="n">Zoho Books API</span><span class="ar">⇄</span><span class="n">FastAPI ops</span><span class="ar">→</span><span class="n hl">BIR · A/R · Daily Sales</span></div>
+      <ul>
+        <li>A home screen that shows what needs attention today: overdue receivables, stock outs, bills due</li>
+        <li>Invoices, bills and stock; Daily Sales and A/R aging reports</li>
+        <li>PH BIR VAT/EWT reporting; payroll posted as Zoho expenses</li>
+        <li>Calibrated print layouts for invoices, receipts and cheques; PDF and Excel export</li>
+        <li>Runs on Docker/Railway and as a Windows desktop launcher</li>
+      </ul>
+      <div class="chips"><span>Python</span><span>FastAPI</span><span>WeasyPrint</span><span>openpyxl</span><span>Docker</span></div>
+    </div>
+    <figure>
+      <div class="shot"><div class="bar"><i></i><i></i><i></i><span>Home · finance dashboard</span></div>
+        <div class="fx" role="img" aria-label="Illustration of the finance dashboard with sample figures: sidebar navigation, yesterday's sales with a 14-day chart, three items needing attention, this month's totals and yesterday's Zoho activity">
+          <div class="fx-side">
+            <div class="brand"><i>TM</i>Zoho Books</div>
+            <span class="on">Home</span>
+            <div class="grp">Overview</div><span>Business pulse</span><span>Zoho activity</span>
+            <div class="grp">Sales &amp; reporting</div><span>Invoices</span><span>Daily Sales</span><span>Receivables</span>
+            <div class="grp">Payables</div><span>Bills</span><span>Expenses</span><span>Manual cheques</span>
+            <div class="grp">Inventory</div><span>Stock</span>
+          </div>
+          <div class="fx-main">
+            <div class="hd"><small>Wednesday · sample data</small><b>Good morning</b><span>Three things need you today.</span></div>
+            <div class="row">
+              <div class="cd">
+                <span class="lb">Yesterday's sales <span class="fx-pill">↓ 3% vs last week</span></span>
+                <span class="big">₱412,500<small>.00</small></span>
+                <svg viewBox="0 0 280 70" aria-hidden="true">
+                  <polygon fill="rgba(108,199,181,.16)" points="4,14 24,34 44,36 64,62 84,62 104,22 124,32 144,10 164,40 184,40 204,62 224,12 244,18 244,70 4,70"/>
+                  <polyline fill="none" stroke="#6cc7b5" stroke-width="2" points="4,14 24,34 44,36 64,62 84,62 104,22 124,32 144,10 164,40 184,40 204,62 224,12 244,18"/>
+                  <circle cx="244" cy="18" r="4" fill="#6cc7b5"/>
+                </svg>
+              </div>
+              <div class="cd">
+                <span class="lb">Needs you <span class="fx-pill r">3 open</span></span>
+                <div class="nd"><i></i><span><b>₱180,000</b> over 90 days<small>Receivables to collect first</small></span></div>
+                <div class="nd"><i class="w"></i><span><b>80</b> items out of stock<small>20 more running low</small></span></div>
+                <div class="nd"><i class="w"></i><span><b>25</b> run out in 7 days<small>At the current sales rate</small></span></div>
+              </div>
+            </div>
+            <div class="tiles">
+              <div class="cd"><span class="lb">Sales</span><span class="big">₱2.9M</span><span class="up">↑ vs last year</span></div>
+              <div class="cd"><span class="lb">Collected</span><span class="big">₱2.6M</span><span class="dn">↓ vs last month</span></div>
+              <div class="cd"><span class="lb">Expenses</span><span class="big">₱0.4M</span><span class="up">↓ vs last month</span></div>
+              <div class="cd"><span class="lb">Owed to us</span><span class="big">₱2.8M</span><span class="up">est.</span></div>
+            </div>
+            <div class="cd act">
+              <span class="lb">What moved in Zoho yesterday</span>
+              <div><span>9:30 PM</span><span>30 invoices created</span><span>₱400,000</span></div>
+              <div><span>9:20 PM</span><span>30 payments received</span><span>₱450,000</span></div>
+              <div><span>4:30 PM</span><span>5 bills entered</span><span>₱350,000</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Home screen, redrawn with sample figures</figcaption>
+    </figure>
+  </article>
+
+  <article class="inner proj">
+    <div class="copy">
+      <div class="meta"><span>[005]</span><span>CLIENT · B2B COMMERCE</span><span class="badge">Private · walkthrough on request</span></div>
+      <h3>TMEcommWeb</h3>
+      <div class="sub">Customer ordering portal · Torrecamps Marketing</div>
+      <ul>
+        <li>Approved registrations become Zoho Contacts, each with their own price book</li>
+        <li>Admins turn submitted orders into Zoho Books draft invoices, so customers never push invoices into Zoho directly</li>
+        <li>Messaging with S3 attachments, Web Push, and an installable PWA</li>
+        <li>Catalog and stock sync under a shared daily Zoho API budget</li>
+        <li>About 400 Vitest and Playwright tests; deployed with Docker on Railway</li>
+      </ul>
+      <div class="chips"><span>Next.js 15</span><span>Drizzle</span><span>PostgreSQL</span><span>Auth.js</span><span>Railway</span></div>
+    </div>
+    <figure>
+      <div class="shot"><div class="bar"><i></i><i></i><i></i><span>How an order becomes an invoice</span></div>
+        <div class="pipe" role="img" aria-label="Diagram of the TMEcommWeb order flow: customer places an order, admin reviews it, the portal creates a Zoho Books draft invoice">
+          <div class="step"><i>1</i><span><b>Customer orders</b><small>Signed-in buyer, prices from their own price book</small></span><em>portal</em></div>
+          <span class="down">↓</span>
+          <div class="step"><i>2</i><span><b>Admin reviews</b><small>Check stock and terms, message the buyer if needed</small></span><em>admin</em></div>
+          <span class="down">↓</span>
+          <div class="step hl"><i>3</i><span><b>Zoho draft invoice</b><small>Created by the portal through the Zoho Books API</small></span><em>Zoho Books</em></div>
+        </div>
+      </div>
+      <figcaption>Order flow, drawn from the real process</figcaption>
+    </figure>
+  </article>
+</section>
+
+<div class="right stack">
   <section class="card panel" id="toolkit">
     <div class="sec-head"><span class="tag">Dev tools</span><h2>My AI toolkit</h2></div>
     <div class="grid tools">
@@ -395,6 +656,28 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding
     const select = () => { const r = document.createRange(); r.selectNodeContents(addr); const s = getSelection(); s.removeAllRanges(); s.addRange(r); msg.textContent = "Selected. Press ⌘C to copy."; };
     try { navigator.clipboard.writeText(addr.textContent).then(() => { msg.textContent = "Copied to clipboard"; }, select); } catch (e) { select(); }
   });
+
+  // Cursor glow, mouse and trackpad only.
+  if (!matchMedia("(hover: hover)").matches) return;
+  const scene = document.querySelector(".scene"), win = document.querySelector(".window");
+  let ev = null, queued = false;
+  const paint = () => {
+    queued = false;
+    for (const el of [scene, win]) {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--px", (ev.clientX - r.left) + "px");
+      el.style.setProperty("--py", (ev.clientY - r.top) + "px");
+    }
+    for (let el = ev.target; el && el !== scene; el = el.parentElement) {
+      if (el.classList.contains("card") || el.classList.contains("inner")) {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (ev.clientX - r.left) + "px");
+        el.style.setProperty("--my", (ev.clientY - r.top) + "px");
+      }
+    }
+  };
+  scene.addEventListener("pointermove", e => { ev = e; scene.classList.add("lit"); if (!queued) { queued = true; requestAnimationFrame(paint); } }, { passive: true });
+  scene.addEventListener("pointerleave", () => scene.classList.remove("lit"));
 })();
 </script>
 <script data-goatcounter="https://jtfrancisco.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
