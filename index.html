@@ -457,6 +457,32 @@ figcaption{font:12px "JetBrains Mono",monospace;color:var(--faint)}
         <div class="chips"><span class="chip">Next.js 15</span><span class="chip">TypeScript</span><span class="chip">Drizzle</span><span class="chip">PostgreSQL</span><span class="chip">Playwright</span><span class="chip">Railway</span></div>
         <a class="link-arrow" href="https://essentoph.com" data-goatcounter-click="essento-site">Visit essentoph.com →</a>
       </article>
+      <article class="card wide reveal" id="p-resibo">
+        <span class="spot"></span>
+        <div class="card-top"><span class="kicker">STANDALONE · AI DOCUMENT EXTRACTION</span><span class="badge pub">● Public repo</span></div>
+        <h3><a href="https://github.com/jtfrancisco0121/ocr-receipts" data-goatcounter-click="resibo-repo">Resibo</a></h3>
+        <div class="sub">Invoice &amp; receipt PDFs to a checked spreadsheet</div>
+        <div class="wide-body media">
+          <div>
+            <p>Bookkeepers still key Philippine invoices in by hand. Resibo reads a multi-page PDF with Claude, then Python checks every number and flags the rows a person should look at. <strong>The model reads; Python decides.</strong></p>
+            <div class="flow"><span class="n">PDF</span><span class="ar">→</span><span class="n">Claude, structured output</span><span class="ar">→</span><span class="n">Validation</span><span class="ar">→</span><span class="n hl">Excel / CSV</span></div>
+            <ul>
+              <li>Finds every document in a PDF (several per page, or one across pages) and returns one row each plus line items</li>
+              <li>Schema-valid JSON through structured outputs; <span class="mono">Decimal</span> money rules for totals, 12% VAT, duplicates, TIN format and dates mark each row OK, REVIEW or ERROR</li>
+              <li>100% of fields correct on an 8-document eval set, about $0.01 a page; a daily budget cap and per-IP limits keep the public demo cheap</li>
+              <li>Web page, HTTP API, CLI and an n8n workflow that turns Google Drive uploads into Google Sheet rows</li>
+            </ul>
+          </div>
+          <figure>
+            <div class="shot"><div class="term-bar"><i></i><i></i><i></i><span>Resibo · sample batch</span></div>
+              <img src="assets/shots/resibo.jpg" alt="Resibo results for an 8-document sample: summary of total, status counts, cost and time, then a table where 6 rows are OK and 2 are ERROR, one for a total that does not add up and one for a duplicate invoice number" width="1100" height="790" loading="lazy">
+            </div>
+            <figcaption>Results for the sample batch · screenshot</figcaption>
+          </figure>
+        </div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Claude API</span><span class="chip">Pydantic</span><span class="chip">openpyxl</span><span class="chip">n8n</span><span class="chip">Docker</span></div>
+        <a class="link-arrow" href="https://github.com/jtfrancisco0121/ocr-receipts" data-goatcounter-click="resibo-repo">View on GitHub →</a>
+      </article>
       <article class="card wide reveal" id="p-tmzoho">
         <span class="spot"></span>
         <div class="card-top"><span class="kicker">CLIENT · FINANCE OPS</span><span class="badge">Private · walkthrough on request</span></div>
@@ -604,7 +630,7 @@ figcaption{font:12px "JetBrains Mono",monospace;color:var(--faint)}
       <div class="skill reveal"><h4><i>{ }</i>Backend</h4><div class="chips"><span class="chip">Go</span><span class="chip">Python / FastAPI</span><span class="chip">Java / Spring Boot</span><span class="chip">Rust</span><span class="chip">OpenAPI</span><span class="chip">Asynq</span></div><div class="used"><b>Used in</b>DATARK (Go, Asynq), TMZohoBooksInteg (FastAPI), DCTerminalv2 (Rust), Philtech (Java 17)</div></div>
       <div class="skill reveal"><h4><i>db</i>Data</h4><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">SQLite</span><span class="chip">SQL Server</span><span class="chip">IBM DB2</span><span class="chip">MySQL</span><span class="chip">S3</span><span class="chip">IPFS</span></div><div class="used"><b>Used in</b>PostgreSQL in Essento and TMEcommWeb; S3 in DATARK</div></div>
       <div class="skill reveal"><h4><i>▭</i>Desktop</h4><div class="chips"><span class="chip">Tauri 2</span><span class="chip">Electron</span><span class="chip">PyInstaller</span></div><div class="used"><b>Used in</b>DCTerminalv2, DATARK desktop, TMZohoBooksInteg launcher</div></div>
-      <div class="skill reveal"><h4><i>⇄</i>Integrations</h4><div class="chips"><span class="chip">Zoho Books</span><span class="chip">Zoho Inventory</span><span class="chip">Auth.js</span><span class="chip">OAuth</span><span class="chip">Web Push</span><span class="chip">ClickUp</span></div><div class="used"><b>Used in</b>TMZohoBooksInteg, TMEcommWeb, DCTerminalv2</div></div>
+      <div class="skill reveal"><h4><i>⇄</i>Integrations</h4><div class="chips"><span class="chip">Zoho Books</span><span class="chip">Zoho Inventory</span><span class="chip">Auth.js</span><span class="chip">OAuth</span><span class="chip">Web Push</span><span class="chip">ClickUp</span><span class="chip">Claude API</span><span class="chip">n8n</span></div><div class="used"><b>Used in</b>TMZohoBooksInteg, TMEcommWeb, DCTerminalv2, Resibo</div></div>
       <div class="skill reveal"><h4><i>▶</i>Delivery</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Railway</span><span class="chip">GitHub Actions</span><span class="chip">Playwright</span><span class="chip">Vitest</span><span class="chip">pytest</span></div><div class="used"><b>Used in</b>300+ E2E at Koneksi; ~400 tests on TMEcommWeb; Railway for Torrecamps apps</div></div>
     </div>
     <div class="skill reveal" style="margin-top:18px"><h4><i>✦</i>AI-assisted engineering</h4><div class="chips"><span class="chip">Claude Code</span><span class="chip">Cursor</span><span class="chip">Spec-to-code loops</span><span class="chip">Agent handoffs</span><span class="chip">Review gates</span><span class="chip">AI-assisted test generation</span></div><div class="used"><b>Used in</b>DCTerminalv2, Essento, Torrecamps delivery</div></div>

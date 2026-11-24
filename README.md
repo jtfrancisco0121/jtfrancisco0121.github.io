@@ -55,6 +55,17 @@ Online shop for everyday supplies for Metro Manila shoppers. It is spec-driven: 
 
 <img src="assets/shots/essento.jpg" alt="Essento storefront: search bar, category filters, headline 'Everyday essentials, delivered to your door' and category cards" width="720">
 
+### 🧾 Resibo — invoice and receipt PDFs to a checked spreadsheet · [repo](https://github.com/jtfrancisco0121/ocr-receipts)
+`Python` `FastAPI` `Claude API` `Pydantic` `openpyxl` `n8n` `Docker`
+
+Bookkeepers still key Philippine invoices in by hand. Resibo reads a multi-page PDF with Claude, then Python checks every number and flags the rows a person should look at. The model reads; Python decides.
+- Finds every document in a PDF (several per page, or one across pages) and returns one row each plus line items
+- Schema-valid JSON through structured outputs; `Decimal` money rules for totals, 12% VAT, duplicates, TIN format and dates mark each row OK, REVIEW or ERROR
+- 100% of fields correct on an 8-document eval set, about $0.01 a page; a daily budget cap and per-IP limits keep the public demo cheap
+- Web page, HTTP API, CLI and an n8n workflow that turns Google Drive uploads into Google Sheet rows
+
+<img src="assets/shots/resibo.jpg" alt="Resibo results for an 8-document sample: 6 rows OK and 2 ERROR, one for a total that does not add up and one for a duplicate invoice number" width="720">
+
 ---
 
 ## Professional work
@@ -82,7 +93,7 @@ Resolved production incidents with ESL, scales, SignShop and POS systems (tracke
 | **Backend** | Go, Python/FastAPI, Java/Spring Boot, Rust (Tauri), JWT, OpenAPI, Asynq | DATARK (Go, Asynq), TMZohoBooksInteg (FastAPI), DCTerminalv2 (Rust), Philtech (Java 17) |
 | **Data** | PostgreSQL, SQLite, SQL Server, IBM DB2, MySQL, S3, IPFS | PostgreSQL in Essento and TMEcommWeb; S3 in DATARK |
 | **Desktop** | Tauri 2, Electron, PyInstaller | DCTerminalv2, DATARK desktop, TMZohoBooksInteg launcher |
-| **Integrations** | Zoho Books/Inventory, Auth.js, OAuth, Web Push, ClickUp | TMZohoBooksInteg, TMEcommWeb, DCTerminalv2 |
+| **Integrations** | Zoho Books/Inventory, Auth.js, OAuth, Web Push, ClickUp, Claude API, n8n | TMZohoBooksInteg, TMEcommWeb, DCTerminalv2, Resibo |
 | **Delivery** | Docker, Railway, GitHub Actions, Playwright, Vitest, pytest | 300+ E2E at Koneksi; ~400 tests on TMEcommWeb; Railway for Torrecamps apps |
 | **AI-assisted engineering** | Claude Code, Cursor, spec-to-code loops, agent handoffs, review gates | DCTerminalv2, Essento, Torrecamps delivery |
 
