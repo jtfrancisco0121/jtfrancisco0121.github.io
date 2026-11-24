@@ -1,6 +1,6 @@
 # Jan Terence Francisco — Portfolio
 
-**Senior Full-Stack Developer** · Go · TypeScript/React · Python/FastAPI · Rust · Java/Spring Boot
+**Full-Stack Developer** · Go · TypeScript/React · Python/FastAPI · Rust · Java/Spring Boot
 
 📧 jtfrancisco21@gmail.com · 🐙 [github.com/jtfrancisco0121](https://github.com/jtfrancisco0121) · 🌐 [Portfolio site](https://jtfrancisco0121.github.io/) · 📄 [Download CV (PDF)](assets/Jan-Terence-Francisco-CV.pdf)
 
