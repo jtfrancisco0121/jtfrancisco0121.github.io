@@ -70,7 +70,7 @@ Bookkeepers still key Philippine invoices in by hand. Resibo reads a multi-page 
 
 ## Professional work
 
-### Koneksi Inc. — Senior Fullstack Developer *(Oct 2025 – Oct 2026)*
+### Koneksi Inc. — Fullstack Developer *(Oct 2025 – Oct 2026)*
 Owned **DATARK** end to end across a Go backend and TypeScript web and desktop apps.
 - **File Disaster Recovery & Compliance:** scoring engine, control matrix, audit ledger, Korean PDF reports, Org Admin dashboard, on-demand recovery testing, retention, and file preview
 - **Notification system** on Asynq/AsynqMon with delivery separated by role, plus role-based onboarding
